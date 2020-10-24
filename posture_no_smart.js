@@ -131,6 +131,7 @@ function setup() {
             console.log('compatible mode')
             //change minimum threshold for face mask prompts
             frameRate(30)
+            document.getElementById('posture_slider').value = 500;
         }
 
      //iaNS = ml5.poseNet(video,'single',modelLoaded);
