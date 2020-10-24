@@ -177,8 +177,8 @@
 	  errorMessage.innerText = infoShort;
 	}
 	
-	if(localStorage.compatibleMode == 1){
-		document.getElementById('compatibleModeCheck').checked = true;
+	if(localStorage.compatibleMode == 0){
+		document.getElementById('compatibleModeCheck').checked = false;
 	}
 
 	function compatibleMode (){

@@ -128,7 +128,7 @@
                     <img src="https://share-cdn-prod.azureedge.net/wp-content/uploads/2014/05/CRS505364_IdealPosition_Blogpostinfographic_FINAL.jpg" alt="IMG"> 
                     <div id="slowMode">
 						<p>Slower / Older Device Mode</p>
-						<input id="compatibleModeCheck" class="toggle" type="checkbox" onclick="compatibleMode()"/>
+						<input id="compatibleModeCheck" class="toggle" type="checkbox" onclick="compatibleMode()" checked/>
 					</div>
                     <!--<img src="https://www.chairoffice.co.uk/media/4871/sitting-properly-diagram.jpg" alt="IMG">  -->
 				</div>
@@ -195,14 +195,20 @@
 	</div>
 	
   <script>
-	  document.getElementById('username').value=localStorage.username
+	  document.getElementById('username').value=localStorage.username;
+
+	  if(localStorage.compatibleMode == 0){
+			document.getElementById('compatibleModeCheck').checked = false;
+		}
+
 	  function compatibleMode (){
 		  if(document.getElementById('compatibleModeCheck').checked == true){
 			localStorage.setItem("compatibleMode","1")
 		  }else{
 			localStorage.setItem("compatibleMode","0")
 		  }
-	  }
+	    }
+
   </script>	
 
 </body>

@@ -97,40 +97,41 @@ function setup() {
      video = createCapture(VIDEO);
      video.hide();    
      
-     if(localStorage.compatibleMode == 1){
-        var options ={
-            //compatibleMode
-            architecture: 'MobileNetV1',
-            imageScaleFactor: 0.26,  
-            outputStride: 16,
-            minConfidence: 0.27,
-            scoreThreshold: 0.4,
-            inputResolution:257, // normal =289  161, 193, 257, 289, 321, 353, 385, 417, 449, 481 & 513
-            maxPoseDetections: 3, 
-            detectionType: 'multiple', 
-            multiplier: 0.50,
-            quantBytes:2, //fast,newish mode = 4
-        }
-        console.log('compatible mode')
-         //change minimum threshold for face mask prompts
-        frameRate(30)
-         
-     }else{
-         //normal mode
+     
+    if(localStorage.compatibleMode == 0){
+        //normal mode
         var options = { 
-            architecture: 'MobileNetV1',
-            imageScaleFactor: 0.37,  // fast,newish mode = 0.6
-            outputStride: 16,
-            minConfidence: 0.3,
-            scoreThreshold: 0.4,
-            maxPoseDetections: 3, 
-            detectionType: 'multiple', 
-            multiplier: 0.75, 
-            quantBytes:2, //fast,newish mode = 4
+          architecture: 'MobileNetV1',
+          imageScaleFactor: 0.40,  // fast,newish mode = 0.6
+          outputStride: 16,
+          minConfidence: 0.3,
+          scoreThreshold: 0.4,
+          maxPoseDetections: 3, 
+          detectionType: 'multiple', 
+          multiplier: 0.75, 
+          quantBytes:2, //fast,newish mode = 4
         };
 
-        frameRate(60)
-     }
+      frameRate(60)        
+    
+    }else{
+            var options ={
+                //compatibleMode
+                architecture: 'MobileNetV1',
+                imageScaleFactor: 0.28,  
+                outputStride: 16,
+                minConfidence: 0.27,
+                scoreThreshold: 0.4,
+                inputResolution:257, // normal =289  161, 193, 257, 289, 321, 353, 385, 417, 449, 481 & 513
+                maxPoseDetections: 3, 
+                detectionType: 'multiple', 
+                multiplier: 0.50,
+                quantBytes:2, //fast,newish mode = 4
+            }
+            console.log('compatible mode')
+            //change minimum threshold for face mask prompts
+            frameRate(30)
+        }
 
      //iaNS = ml5.poseNet(video,'single',modelLoaded);
      iaNS = ml5.poseNet(video,options,modelLoaded);
