@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>NOMOI Tutorials</title>
+  <meta content="Nomoi is an AI-driven computer ergonomics and COVID-19 safety solution. Our purpose is help reduce the stresses computer users may feel from prolonged laptop usage and support users with COVID-19 compliance, where necessary. " name="description">
+  <meta content="nomoi computer ergonomics AI COVID-19 compliance facetouch facemask" name="keywords">
+
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../public/tutorial/tutorial_style.css" rel="stylesheet">
+
+  <style>
+    #tutorialVideoFrame{
+      display:none;
+      position: absolute;
+      left:10%;
+      top:10%;
+      width:80%;
+      height:80%;
+      background:rgba(0, 0, 0, 0.83);
+    }
+
+    #closeTutorial{
+      font-size: 150%;
+      position: relative;
+      left:5%;
+      top:5%;
+      color:white;
+    }
+
+    #postureTrackerVideo{
+      display:none;
+      position: absolute;
+      left:10%;
+      top:10%;
+      width:80%;
+      height:80%;
+      opacity: 1;
+    }
+
+    #smartTimerVideo{
+      display:none;
+      position: absolute;
+      left:10%;
+      top:10%;
+      width:80%;
+      height:80%;
+      opacity: 1;
+    }
+
+    #screenDistanceVideo{
+      display:none;
+      position: absolute;
+      left:10%;
+      top:10%;
+      width:80%;
+      height:80%;
+      opacity: 1;
+    }
+
+    #hydrationTrackerVideo{
+      display:none;
+      position: absolute;
+      left:10%;
+      top:10%;
+      width:80%;
+      height:80%;
+      opacity: 1;
+    }
+
+    #faceTouchVideo{
+      display:none;
+      position: absolute;
+      left:10%;
+      top:10%;
+      width:80%;
+      height:80%;
+      opacity: 1;
+    }
+    
+    #faceMaskVideo{
+      display:none;
+      position: absolute;
+      left:10%;
+      top:10%;
+      width:80%;
+      height:80%;
+      opacity: 1;
+    }
+
+    #dashboardVideo{
+      display:none;
+      position: absolute;
+      left:10%;
+      top:10%;
+      width:80%;
+      height:80%;
+      opacity: 1;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container-fluid d-flex">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light" style="font-size: 24px"><a href="/"><span>NOMOI</span></a></h1>
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a href="#FAQs">FAQs</a></li>
+          <li class="signUp"><a href="#contact">Still not sure</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+      <a id="start" href="/tool">Start</a>
+    </div>
+  </header><!-- End Header -->
+
+
+
+  <main id="main">
+    <!-- ======= Services Section ======= -->
+    <section id="features" class="services section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Tutorials</h2>
+          <p>Click on a feature to see how to use it:</p>
+        </div>
+
+ 
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
+            <div class="icon-box" onclick="showDashboard()">
+              <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-laptop" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M13.5 3h-11a.5.5 0 0 0-.5.5V11h12V3.5a.5.5 0 0 0-.5-.5zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11z"/>
+                <path d="M0 12h16v.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5V12z"/>
+              </svg>
+              <h4 class="title"><a href="">NOMOI Dashboard</a></h4>
+              <p class="description">Your dashboard will allow you: to activate features, track your scores/usage & meet your NOMOI targets! </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box" onclick="showPosture()">
+              <svg class="bi bi-person-bounding-box" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg>
+              <h4 class="title"><a href="">Posture Tracker</a></h4>
+              <p class="description">Keeping track of your posture to help prevent any unwanted stresses or strains from prolonged use.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box"  onclick="showTimer()">
+              <svg class="bi bi-alarm" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A6 6 0 1 0 8 3a6 6 0 0 0 0 12zm0 1A7 7 0 1 0 8 2a7 7 0 0 0 0 14z"/>
+                <path fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.053.224l-1.5 3a.5.5 0 1 1-.894-.448L7.5 8.882V5a.5.5 0 0 1 .5-.5z"/>
+                <path d="M.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.035 8.035 0 0 0 .86 5.387zM11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.035 8.035 0 0 0-3.527-3.527z"/>
+                <path fill-rule="evenodd" d="M11.646 14.146a.5.5 0 0 1 .708 0l1 1a.5.5 0 0 1-.708.708l-1-1a.5.5 0 0 1 0-.708zm-7.292 0a.5.5 0 0 0-.708 0l-1 1a.5.5 0 0 0 .708.708l1-1a.5.5 0 0 0 0-.708zM5.5.5A.5.5 0 0 1 6 0h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+                <path d="M7 1h2v2H7V1z"/>
+              </svg>
+              <h4 class="title"><a href="">Smart Timer</a></h4>
+              <p class="description">Making sure you take regular breaks to keep your eyes relaxed.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box" onclick="showScreenDistance()">
+              <svg class="bi bi-eye-fill" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+              </svg>
+              <h4 class="title"><a href="">Screen Distance</a></h4>
+              <p class="description">Distance tracker to make sure you are not sitting too close/too far from your computer screen.</p> <!--dependant on the screen size-->
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
+            <div class="icon-box" onclick="showHydration()">
+              <svg class="bi bi-droplet-half" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                <path d="M14 10a6 6 0 0 1-12 0s2.5 2.5 6.5.5S14 10 14 10z"/>
+              </svg>
+              <h4 class="title"><a href="">Hydration Tracker</a></h4>
+              <p class="description">NOMOI keeps track of your hydration, making sure you are not dehydrated or overhydrated.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
+            <div class="icon-box" onclick="showFaceTouch()">
+            
+             <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-emoji-smile" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path fill-rule="evenodd" d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683z"/>
+              <path d="M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+            </svg>
+              <h4 class="title"><a href="">Covid-19 Face Touch</a></h4>
+              <p class="description">NOMOI's AI hand tracking software will alert you if you have been touching your face too much.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
+            <div class="icon-box" onclick="showFaceMask()">
+              <svg class="bi bi-exclamation-circle" width="3em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+              </svg>
+              <h4 class="title"><a href="">Face Mask Prompts</a></h4>
+              <p class="description">Face masks are becoming omnipresent. NOMOI can remind you if you are not wearing your mask properly or at all!</p>
+            </div>
+          </div>       
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
+            <div class="icon-box" >
+            
+              <h4 class="title"><a id="startBox" href="/tool">Start</a></h4>
+              <p class="description"> We hope NOMOI will be able to help you and improve your habits in the long term. Please send us any feedback you have - it is greatly valued.</p>
+             
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+
+    <span id= "tutorialVideoFrame" >
+      <a href="javascript:void(0)" id="closeTutorial" onclick="closeTutorial()">X</a>
+      <iframe id ="postureTrackerVideo" width="100%" height="100%" src="https://www.youtube.com/embed/g6Vkaqv0AFM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe id ="smartTimerVideo" width="100%" height="100%" src="https://www.youtube.com/embed/u-VTWgixiZU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe id ="screenDistanceVideo" width="100%" height="100%" src="https://www.youtube.com/embed/d7KWDCaJVA0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe id ="hydrationTrackerVideo" width="100%" height="100%" src="https://www.youtube.com/embed/N-lSXTojD2E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe id ="faceTouchVideo" width="100%" height="100%" src="https://www.youtube.com/embed/u4FuRWL7iyw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe id ="faceMaskVideo" width="100%" height="100%" src="https://www.youtube.com/embed/KHRRbhunV90" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe id="dashboardVideo" width="100%" height="100%" src="https://www.youtube.com/embed/Do9q256Z9dg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </span>
+
+
+     <!-- ======= F.A.Q Section ======= -->
+    <section id="FAQs" class="faq section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>F.A.Q</h2>
+          <p>Frequently Asked Questions</p>
+        </div>
+
+        <ul class="faq-list">
+
+          <li data-aos="fade-up" data-aos-delay="100">
+            <a data-toggle="collapse" class="" href="#faq1">Why am I not getting any notifications? <i class="icofont-simple-up"></i></a>
+            <div id="faq1" class="collapse show" data-parent=".faq-list">
+            
+                <p>Nomoi is running in the background, if when you hover over the Chrome/Firefox icon, you can see yourself moving. If this is not the case, make sure you are on the Nomoi tab (if you have multiple tabs in a window).</p>
+                <p>Check if Chrome/ Firefox notifications are enabled in the notification center on your pc.</p>
+                <p>Check your browser notification settings to see if Nomoi is allowed to send notifications.</p>
+                <p>Check the url; make sure it is https:// NOT http://</p>
+             
+            </div>
+          </li>
+
+          <li data-aos="fade-up" data-aos-delay="200">
+            <a data-toggle="collapse" href="#faq2" class="collapsed">Why I am not getting a webcam image? <i class="icofont-simple-up"></i></a>
+            <div id="faq2" class="collapse" data-parent=".faq-list">
+              <p>Check your browser camera settings to see if Nomoi is allowed.</p>
+          <p>On Chrome, open settings -> site settings -> camera -> click the bin icon next to Nomoi.</p>
+          <p>On Firefox, open options -> privacy & security -> camera -> change blocked to allow.</p>
+            </div>
+          </li>
+
+          <li data-aos="fade-up" data-aos-delay="300">
+            <a data-toggle="collapse" href="#faq3" class="collapsed">Am I being recorded?<i class="icofont-simple-up"></i></a>
+            <div id="faq3" class="collapse" data-parent=".faq-list">
+              <p>You are not being recorded in any way, shape or form.</p>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </section><!-- End F.A.Q Section -->
+
+
+
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Contact Us</h2>
+          <p>Reach out to us for any help you may need!</p>
+        </div>
+
+      
+          <div class="d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="info">
+
+              <div class="email">
+                <i class="icofont-envelope"></i>
+                <h4>Email:</h4>
+                <p style="font-weight: 700;font-size: large;">Customer Services: support@nomoi.org.uk</p>
+              </div>
+
+              <div class="address">
+                <i class="icofont-google-map"></i>
+                <h4>Location:</h4>
+                <p style="font-size: large;">London, United Kingdom</p>
+              </div>
+            </div>
+          </div>
+
+  
+
+      </div>
+    </section><!-- End Contact Us Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+   
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright  <strong><span>NOMOI 2020</span></strong>. All Rights Reserved
+      </div>
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <script>
+    function showPosture(){
+      document.getElementById('tutorialVideoFrame').style.display = 'block'
+      document.getElementById('postureTrackerVideo').style.display = 'block'
+    }
+
+    function showTimer(){
+      document.getElementById('tutorialVideoFrame').style.display = 'block'
+      document.getElementById('smartTimerVideo').style.display = 'block'
+    }
+
+    function showScreenDistance(){
+      document.getElementById('tutorialVideoFrame').style.display = 'block'
+      document.getElementById('screenDistanceVideo').style.display = 'block'
+    }
+
+    function showHydration(){
+      document.getElementById('tutorialVideoFrame').style.display = 'block'
+      document.getElementById('hydrationTrackerVideo').style.display = 'block'
+    }
+
+    function showFaceTouch(){
+      document.getElementById('tutorialVideoFrame').style.display = 'block'
+      document.getElementById('faceTouchVideo').style.display = 'block'
+    }
+
+    function showFaceMask(){
+      document.getElementById('tutorialVideoFrame').style.display = 'block'
+      document.getElementById('faceMaskVideo').style.display = 'block'
+    }
+
+    function showDashboard(){
+      document.getElementById('tutorialVideoFrame').style.display = 'block'
+      document.getElementById('dashboardVideo').style.display = 'block'
+    }
+
+    function closeTutorial(){
+      document.getElementById('tutorialVideoFrame').style.display = 'none'
+      document.getElementById('postureTrackerVideo').style.display = 'none'
+      document.getElementById('smartTimerVideo').style.display = 'none'
+      document.getElementById('screenDistanceVideo').style.display = 'none'
+      document.getElementById('hydrationTrackerVideo').style.display = 'none'
+      document.getElementById('faceTouchVideo').style.display = 'none'
+      document.getElementById('faceMaskVideo').style.display = 'none'
+      document.getElementById('dashboardVideo').style.display = 'none'
+    }
+
+  </script>
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

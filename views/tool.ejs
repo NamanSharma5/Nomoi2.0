@@ -1,0 +1,243 @@
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>NOMOI App</title>
+        <meta name="Description" content="The NOMOI web application - your hub for computer ergonomics and COVID-19 device safety! Sign up for FREE to see how NOMOI can help you.">
+
+        <link href="/public/shams.css" rel="stylesheet">
+
+        <script src="magic.js"></script>
+        <script src="swae.js"></script>
+
+        <script src="ion.js"></script>
+        
+        <script src="push.min.js" ></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- better as people use jquery on other websites hence it gets cached-->
+    
+        <!--Google UI CDN-->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+        <meta charset="utf-8" />
+    
+        <style>
+          #displayName{
+            color:white;
+          }    
+          </style>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129033232-2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-129033232-2');
+        </script>
+    </head>
+    
+    
+<body>
+  
+  <a class = 'title' ><%=user.firstname%>'s NOMOI</a>
+  <button class="openbtn" onclick="openNav()">☰ Settings</button> 
+  <button class = "logout"  onclick="window.location.href='/logout';">Log Out</button>
+
+  <br style="line-height: 0.4em;"></br>
+              
+  <script src ="jumble.js"></script>
+
+
+    <div id="mySidepanel" class="sidepanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+     <!--  <p id="userInfo"><%=user %></p> -->
+      <p id="userInfo"><%=user %></p>
+      <p id="firstName"><%=user.firstname%></p> 
+      <p id="userEmail"><%=user.username%></p>
+      <button class= "lefthand" id ="leftHandMode" onclick="Left_Hand()">Left Hand Mode</button>  
+
+      <br></br>
+      <button class = "tooClose" id="tooCloseButton" onclick = "tooCloseNotifications()">Too Close to Screen Notifications: OFF</button> 
+      <br></br>
+      
+      <button class = "voiceMessage"  id= "voiceMessage" onclick = "voiceMessage()">Talking Timer Notification: OFF</button>
+      <p style='size:0.01em;' id='tutorialLink' onclick="window.location.href='https://www.nomoi.org.uk/tutorial';">Tutorials</p>
+  </div>
+
+  
+    <div class="option-group">
+      <div class="option-container">
+    
+        <input class="option-input" id="option-1" type="radio" name="options" onclick="perfectPostureTab()"/>
+        <input class="option-input" id="option-2" type="radio" name="options" onclick="timerTab()"/>
+        
+        <label class="option" for="option-1">
+          <span id = "perfectPostureFullDisplay">
+              <button id="perfectPosture" onclick="calibrate()">Perfect Posture</button>
+              <input type="range" min="200" max="800" value="325" class="slider" id="posture_slider">
+              <button id="min" onclick="min_sensitivity()" >Max</button>
+              <button id="max" onclick="max_sensitivity()" >Min</button>
+              <button class="glow-on-hover" type="button" id="pausePosture" onclick = "pausePosture()">Pause</button>
+          </span>
+          <span id = "perfectPostureIcon">
+              <svg width="100%" height="100%" viewBox="0 0 18 18" class="bi bi-person-bounding-box" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                  <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>
+          </span>
+          </label>
+    
+        <label class="option" for="option-2">
+          <span id="timerIcon">
+              <svg width="100%" height="100%" viewBox="0 0 16 16" class="bi bi-alarm" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8 15A6 6 0 1 0 8 3a6 6 0 0 0 0 12zm0 1A7 7 0 1 0 8 2a7 7 0 0 0 0 14z"/>
+                  <path fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.053.224l-1.5 3a.5.5 0 1 1-.894-.448L7.5 8.882V5a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.035 8.035 0 0 0 .86 5.387zM11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.035 8.035 0 0 0-3.527-3.527z"/>
+                  <path fill-rule="evenodd" d="M11.646 14.146a.5.5 0 0 1 .708 0l1 1a.5.5 0 0 1-.708.708l-1-1a.5.5 0 0 1 0-.708zm-7.292 0a.5.5 0 0 0-.708 0l-1 1a.5.5 0 0 0 .708.708l1-1a.5.5 0 0 0 0-.708zM5.5.5A.5.5 0 0 1 6 0h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+                  <path d="M7 1h2v2H7V1z"/>
+              </svg>
+          </span>
+          <span id = "timerFullDisplay">
+              <button id= "timer" onclick="timer()">Start 20-20-20 Timer</button>
+          </span>
+        </label>
+    
+      </div>
+    </div>
+    <div class="option-group-2">
+      <div class="option-container">
+    
+        <input class="option-input" checked id="option-3" type="radio" name="options" onclick="fullCupTab()"/>
+        <input class="option-input" id="option-4" type="radio" name="options" onclick="covidTab()" />
+        
+        <label class="option"  for="option-3">
+          <div class="glass" onclick="fullCup()" id="glass">
+              <div class="water" id="water"></div>
+          </div>
+        </label>
+    
+        <label class="option" for="option-4">
+              <span id="covidFullDisplay">
+                  <br style="line-height:0.5em">
+                  <button id= "faceTouch" onclick="faceTouch()">Covid-19 FaceTouch: OFF</button>
+                  <button id= "maskPrompt" onclick="maskPrompt()">Face Mask Prompts: OFF</button>                
+              </span>
+              <span id = "covidIcon">
+                  <!-- <svg width="100%" height=100% viewBox="0 0 16 16" class="bi bi-suit-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 6.236l.894-1.789c.222-.443.607-1.08 1.152-1.595C10.582 2.345 11.224 2 12 2c1.676 0 3 1.326 3 2.92 0 1.211-.554 2.066-1.868 3.37-.337.334-.721.695-1.146 1.093C10.878 10.423 9.5 11.717 8 13.447c-1.5-1.73-2.878-3.024-3.986-4.064-.425-.398-.81-.76-1.146-1.093C1.554 6.986 1 6.131 1 4.92 1 3.326 2.324 2 4 2c.776 0 1.418.345 1.954.852.545.515.93 1.152 1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"/>
+                  </svg>-->
+                  <img style= "height:120%" src='/public/images/heartwithLine.png'>
+              </span>
+        </label>
+    
+      </div>
+    </div>
+    
+    <button id="notificationMode" onclick="notificationMode()">Live Notifications: ON</button>
+
+    <div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel">           
+     
+      <div class="carousel-inner">
+          <div class="item active">
+            <div id="nomoiLog" ></div>
+          </div>
+    
+          <div class="item">
+            <div id="ergonomicsBox">
+              <p> My Ergonomics </p>
+              <div id="postureTimerGauges" ></div> 
+              <div id="hydrationDistanceGauges" ></div>
+            </div> 
+          </div>
+        
+          <div class="item ">
+            <div id = "covidBox">
+              <p> Nomoi COVID-19 overview </p>
+
+              <div class="outer-wrapper1">
+                <div class="column-wrapper">
+                  <div class="column1"></div>
+                </div>
+                <div class="percentage" id="percentage1">50</div>
+              </div>
+              
+              <div class="outer-wrapper2">
+                <div class="column-wrapper">
+                  <div class="column2"></div>
+                </div>
+                <div class="percentage" id="percentage2">55</div>
+              </div>
+              <p id = "faceTouchColumn"> FaceTouch</p>
+              <p id = "faceMaskColumn"> FaceMask</p>
+            </div>
+          </div>
+      </div>
+    
+      
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+      <ol class="carousel-indicators" style = "position:relative; bottom:-10px">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+    </div>
+
+    <div id="cardContainer">
+      <div id="card">
+        <h3 id="cardTitle">Achievement 2</h3>
+        <div id="bar">
+          <div id="emptybar"></div>
+          <div id="filledbar"></div>
+        </div>
+        <div id = "cardText">
+          <p>You are mindful of your ergonomics, health & safety!</p>
+        </div>
+      </div>
+      <div id="card">
+        <h3 id="cardTitle">Achievement 1</h3>
+        <div id="bar">
+          <div id="emptybar"></div>
+          <div id="filledbar"></div>
+        </div>
+        <div id = "cardText">
+          <p>You have logged onto Nomoi <%=user.noOfLogins%> times.</p>
+        </div>
+      </div>
+      <div id="card">
+        <h3 id="cardTitle">Target 2</h3>
+        <div id="bar">
+          <div id="emptybar"></div>
+          <div id="filledbar"></div>
+        </div>
+        <div id = "cardText">
+          <p>The COVID-19 FaceTouch feature is super helpful. Check it out!</p>
+        </div>
+      </div>
+      <div id="card">
+        <h3 id="cardTitle">Target 1</h3>
+        <div id="bar">
+          <div id="emptybar"></div>
+          <div id="filledbar"></div>
+        </div>
+        <div id = "cardText">
+            <p>Aim to use Nomoi everyday for at least 30 mins.</p>
+        </div>
+      </div>
+    </div>
+     
+</body>
+
+

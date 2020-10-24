@@ -1,0 +1,193 @@
+<head>
+	<title>NOMOI Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Description" content="Login to check out the NOMOI web application. You can sign up for FREE if you do not have an account. NOMOI is a computer ergonomics and COVID-19 safety solution.">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<style>
+		#error-message{
+			text-align: center;
+			font-weight: 700;
+			color: #fd2121;
+		}
+		.tooltip {
+			position: relative;
+			display: inline-block;
+			border-bottom: 1px dotted black;
+			font-size: 14px;
+			margin-left: 19%;
+			margin-top: 7%;
+		}
+
+		.tooltip .tooltiptext {
+			visibility: hidden;
+			width: 120px;
+			background-color: black;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 3px 0;
+			font-size: 14px;
+
+			/* Position the tooltip */
+			position: absolute;
+			z-index: 1;
+			width: 120px;
+			top: 100%;
+			left: 50%;
+			margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+		}
+
+		.tooltip:hover .tooltiptext {
+		visibility: visible;
+		}
+
+		.toggle {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		position: absolute;
+		top:8px;
+		width: 50px;
+		height: 25px;
+		display: inline-block;
+		position: relative;
+		border-radius: 30px;
+		overflow: hidden;
+		outline: none;
+		border: none;
+		cursor: pointer;
+		background-color: #707070;
+		transition: background-color ease 0.3s;
+		}
+
+		.toggle:before {
+		content: "ON OFF";
+		display: block;
+		position: absolute;
+		z-index: 2;
+		width: 20px;
+		height: 18px;
+		background: #fff;
+		left: 2px;/* circle position*/
+		top: 3px;
+		border-radius: 50%;
+		font: 10px/22px Helvetica;
+		font-weight: bold;
+		text-indent: -22px;
+		word-spacing: 26px;/* where word starts in slider*/
+		color: #fff;
+		text-shadow: -1px -1px rgba(0,0,0,0.15);
+		white-space: nowrap;
+		box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+		transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+		}
+
+		.toggle:checked {
+		background-color: #57b846;
+		font: 10px/22px Helvetica;
+		}
+
+		.toggle:checked:before {
+		left: 28px; /* how much circle slides */
+		}
+
+	</style>
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="images/boy-at-desk.jpg" alt="IMG">
+				</div>
+
+				<form action = "/login" method = "post">
+					<span class="login100-form-title">
+						Login to NOMOI
+					</span>
+
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="email" name="username" placeholder="email">
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<!-- <span class="focus-input100"></span> -->
+						<span class="symbol-input100">	
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+					<div class="text-center p-t-12">
+						<span class="txt1">
+							Forgot
+						</span>
+						<a class="txt2" href="/#contact">
+							Username / Password?
+						</a>
+						<span class="txt1">
+							- Get Help
+						</span>
+					</div>
+
+					<div>
+						<p id="error-message"></p>
+					</div>
+					
+					<div class="tooltip">Compatible Mode
+						<span class="tooltiptext">For older/slower devices.</span>
+					</div>
+					<input id="compatibleModeCheck" class="toggle" type="checkbox" onclick="compatibleMode()" checked />
+					
+					<div class="text-center p-t-136">
+						<a class="txt2" href="/">
+							NOMOI
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    var info = urlParams.get('info');
+
+    if(info) {
+      const errorMessage = document.getElementById("error-message");
+	  var infoShort=info.slice(24)
+	  errorMessage.innerText = infoShort;
+	}
+	
+	if(localStorage.compatibleMode == 1){
+		document.getElementById('compatibleModeCheck').checked = true;
+	}
+
+	function compatibleMode (){
+		  if(document.getElementById('compatibleModeCheck').checked == true){
+			localStorage.setItem("compatibleMode","1")
+		  }else{
+			localStorage.setItem("compatibleMode","0")
+		  }
+	  }
+  </script>	
+
+</body>

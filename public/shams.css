@@ -1,0 +1,1580 @@
+
+body,html{                      
+            
+    zoom:105%;
+    /* The image used */
+    /* background-image: url("https://wallpaperplay.com/walls/full/b/8/a/60931.jpg"); */
+    background-image: url('images/simpleBlue.jpg');
+    
+    /* https://harrowschool-my.sharepoint.com/personal/15sharman_harrowschool_org_uk/Documents/Documents/_Web%20development/Working%20Login%20Only/views/OG_background.jpg' */
+
+    /* Full height */
+    height: 100%;
+    overflow: hidden;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logout {
+    background: #383838;
+    height: 40px;
+    width: 90px;
+    border: none;
+    border-radius: 12px;
+    color: #eee;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    top:60px;
+    right: 0px;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-top: 1px;
+}
+
+    
+.logout:hover {
+    background: transparent;
+    font-weight: 600;
+    color: #000;
+}
+
+/*--------------------------------------------------------------
+# Sidepanel
+--------------------------------------------------------------*/
+
+.sidepanel  {
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    height: 250px;
+    top: 0;
+    right: 0;
+    background-color: #383838;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 50px;
+    border-radius: 6px;
+}
+
+.sidepanel p {
+    font-size:22px;
+}
+
+.sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #a6a6a6;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidepanel a:hover {
+    color: #f1f1f1;
+}
+
+.sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 28px;
+}
+
+.sidepanel button {
+    padding: 6px;
+    background-color:#ffb8b8;
+    color: black;
+    border: 2px solid #555555;
+    border-radius: 9px;
+    cursor: pointer;
+    
+}
+
+.sidepanel .lefthand {
+    padding: 6px;
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+    border-radius: 9px;
+    cursor: pointer;
+    
+}
+
+.sidepanel .lefthand:hover{
+    background-color: #555555;
+    color: white;
+}
+
+.openbtn {
+    position:fixed; /*stays on top right irrespective of screen size*/
+    top:0;
+    right:0;
+    font-size: 17px;
+    cursor: pointer;
+    background-color: #383838;
+    color: white;
+    padding: 10px 12px;
+    border: none;
+    border-radius:6px;
+}
+
+.openbtn:hover {
+    background-color:#444;
+}
+
+#tutorialLink{
+    color:white;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    position:absolute;
+    top:4px;
+    left:10px;
+    margin-bottom: 0;
+    padding:0 2 0 2;
+    border-style: solid;
+    border-radius: 3px;
+}
+#tutorialLink:hover{
+    cursor:pointer;
+}
+
+#userInfo{
+    display:none;
+}
+
+#firstName {
+    color:white;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+#userEmail{
+    display:none;
+}
+
+/*--------------------------------------------------------------
+# 
+--------------------------------------------------------------*/
+
+.title {
+    color:white;
+    background-image: linear-gradient(to right, rgb(55, 70, 129), rgb(76, 82, 132),rgb(86, 86, 135),rgb(112, 95, 140));
+    font-family:  Helvetica;
+    font-size: 20px;
+    text-align: left;
+    position:fixed;
+    text-decoration: none;
+    position:fixed;
+    left:44%;
+    top:7px;
+    font-weight: 100;
+    letter-spacing:0.1em;
+    border-radius:0.25em;
+    padding: 3px 5px 3px 5px;
+
+}
+.title:hover{
+color:white;
+text-decoration: none;
+}
+
+
+
+/*New box layout */
+.option-group {
+
+width: 36%;
+height: 24%;
+position:fixed;
+left:0.7%;
+top:46%;
+overflow: hidden;
+border-radius: 0.25em;
+font-size: 4rem;
+margin: 0.2em auto;
+will-change: transform; 
+transform: translateZ(0);
+}
+.option-group-2{
+
+width: 36%;
+height: 24%;
+position:fixed;
+left:0.7%;
+top:71%;
+overflow: hidden;
+border-radius: 0.25em;
+font-size: 4rem;
+margin: 0.2em auto;
+will-change: transform; 
+transform: translateZ(0);
+}
+
+.option-container {
+display: flex; 
+justify-content: center;
+align-items: stretch;
+width: 120%;
+height: 100%;
+margin: 0 -10%;
+}
+
+.option {
+overflow: hidden;
+flex: 1;
+display: block;
+padding: 0.5em;
+background: rgba(255, 255, 255, 0.856);
+position: relative;
+margin: 0em;
+margin-right: 0.2em;
+
+
+border-radius: 0.25em;
+
+/* display:flex;
+justify-content: flex-end;
+align-items: flex-start;
+flex-direction: column;  original inner text formatting */
+
+cursor: pointer;
+
+opacity: 0.7;
+transition-duration: 0.4s, 0.4s;
+transition-property: transform, opacity;
+transition-timing-function: cubic-bezier(.98,0,.22,.98), linear;
+will-change: transform, opacity;
+}
+
+.option__indicator {
+display: block;
+transform-origin: left bottom;
+transition: inherit;
+will-change: transform;
+position: absolute;
+top: 0.5em;
+right: 0.5em;
+left: 0.5em;
+}
+
+
+&:after {
+    background: #64D6EE;
+    transform: scale(0);
+    transition: inherit;
+    will-change: transform;
+}
+
+.option-input {
+position: absolute;
+top: 0;
+z-index: -1;
+visibility: hidden;
+}
+
+
+.option-input:checked ~ .option {
+transform: translateX(-20%) translateX(0.2em);
+.option__indicator { transform: translateX(0%); }
+.option__label { transform: translateX(40%) scale(0.7); }
+}
+
+.option-input:first-child:checked ~ .option {
+transform: translateX(20%) translateX(-0.2em);
+.option__indicator { transform: translateX(-40%); }
+.option__label { transform: translateX(0%) scale(0.7); }
+}
+
+.option-input:nth-child(1):checked ~ .option:nth-of-type(1),
+.option-input:nth-child(2):checked ~ .option:nth-of-type(2) {
+opacity: 1;
+.option__indicator { transform: translateX(0); &::after { transform: scale(1); } }
+.option__label,
+.option__label::after { transform: scale(1); }
+}
+
+#perfectPostureFullDisplay{
+    display:none;
+}
+
+#perfectPostureIcon{
+    display:block;
+    width:37%;
+    height:38%;
+    position:absolute;
+    right:21%;
+    top:32%;
+}
+
+
+#perfectPosture {
+position:absolute;
+left:24.5%;
+top:25%;
+padding:8px 14px;
+border-radius: 5px;
+border-width:0.1em;
+font-size: 15px;
+font-weight: bold;
+
+}        
+
+#posture_slider{
+    position:absolute;
+    left:25%;
+    top:51%;
+    width:50%;
+    
+}       
+
+#min{
+    position:absolute;
+    left:22%;
+    top:63%;
+    background-color:#bfe8bc ;
+    font-size:13.5px;
+    border-radius: 6px;
+    padding: 2px 4px;
+    border-width: 1px;
+}         
+
+#max{
+    position:absolute;
+    left:68%;
+    top:63%;
+    background-color: #f2bfbf;
+    font-size:13.5px;
+    border-radius: 6px;
+    padding: 2px 4px;
+    border-width: 1px;
+}       
+
+.glow-on-hover { /* pause button */
+    width:  20%;
+    height: 10%;
+    border: none;
+    outline: none;
+    color: black;
+    font-size: 0.30em;
+    font-weight:bold;
+    cursor: pointer;
+    position: absolute;
+    top:10%;
+    left:42%;
+    z-index: 0;
+    border-radius: 10px;
+    display:none;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(1px);
+    width: calc(100% );
+    height: calc(100% + 15%);
+    animation: glowing 17s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:after { /* top white box */
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 90%;
+    height: 99%;
+    background: white;
+    left: 2%; /* positioning the white box*/
+    top: 1%;
+    border-radius: 10px;
+    
+}
+
+.glow-on-hover:hover:before {
+    opacity: 0;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+#timerIcon{
+    display: block;
+    width:36%;
+    height:36%;
+    position:absolute;
+    left:25%;
+    top:30%;
+}
+#timerFullDisplay{
+    display: none;
+}
+
+#timer{
+    position:absolute;
+    top:36%;
+    left:19%;
+    padding:10px 16px;
+    border-radius: 5px;
+    border-width:0.1em;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#covidIcon{
+    display: block;
+    width:37%;
+    height:37%;
+    position:absolute;
+    top:32%;
+    left:19%;
+    
+}
+
+#covidFullDisplay{
+    display:none;
+}
+
+#faceTouch{
+    position:absolute;
+    left:2%;
+    top:23%;
+    padding:9px;
+    border-radius: 5px;
+    border-width:0.1em;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #fcdcdc;
+}
+
+#maskPrompt{
+    position:absolute;
+    left:2%;
+    top:58%;
+    padding:9px;
+    border-radius: 5px;
+    border-width:0.1em;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #fcdcdc;
+}
+
+
+#glass {
+    margin: 10px auto;
+    height: 80%;
+    width: 35%;
+    position: absolute;
+    left:30%;
+    top:5%;
+    border-style: none solid solid solid;
+    border-width: 8px;
+    border-color: lightgray;
+    border-radius: 10px;
+}
+
+#water {
+    width: 100%;
+    height: 85%;
+    background-color: skyblue;
+    position: absolute;
+    bottom: 0;
+    
+} 
+
+#notificationMode{
+    position:absolute;
+    left:60%;
+    top:59%;
+    padding:10px 16px;
+    border-radius: 5px;
+    border-width:0.1em;
+    font-size: 16px;
+    font-weight: bold;
+    color:black;
+    /*background-image: linear-gradient(to right, rgb(55, 70, 129), rgb(76, 82, 132),rgb(86, 86, 135),rgb(112, 95, 140));
+    */
+      background-image: linear-gradient(to right top, #08a4dd, #49aae0, #68b1e2, #80b7e4, #95bee6, #afc1ea, #c6c5ea, #d9c9e9, #f2cde0, #ffd4d6, #ffdfd0, #fcecd3);
+    
+    
+}
+
+/* Carousel */
+#myCarousel{
+    position: absolute;
+    left: 47.5%;
+    top:7%;
+    height:47%;
+    width:41%;
+}
+
+/* NOMOI GRAPHS  */
+
+#nomoiLog{
+    width: 83%;
+    height: 95%;
+    position: relative;
+    left:50px;
+    top:10px;    
+    
+}
+
+#ergonomicsBox{
+    width:100%;
+    height:90%;
+}
+
+#postureTimerGauges{
+    width: 600px;
+    height: 150px;
+    position: relative; 
+    left:24%;   
+}
+
+#hydrationDistanceGauges{
+    width: 600px;
+    height: 150px;
+    position: relative; 
+    left:24%;   
+}
+
+/* vertical gauges */
+#covidBox{
+    height:90%;
+    width:100%;
+}
+.outer-wrapper1{
+    display: inline-block;
+    margin: 5px 10px;
+    padding: 20px 15px;
+    background: #eee;
+    min-width: 10%;
+    height:70%;
+    position: relative;
+    left:31%;
+    opacity:0.87;
+}
+
+.outer-wrapper2{
+    display: inline-block;
+    margin: 5px 10px;
+    padding: 20px 15px;
+    background: #eee;
+    min-width: 10%;
+    height:70%;
+    position: relative;
+    left:38%;
+    opacity:0.87;
+}
+  
+.column-wrapper{
+    height: 90%;
+    width: 70%;
+    background: #CFD8DC;
+    transform: rotate(180deg);
+    margin: 0 auto;
+}
+
+.column1{
+    width: 100%;
+    height: 50%;
+    background: #FFEB3B;
+}
+
+.column2{
+    width: 100%;
+    height: 55%;
+    background: #FFEB3B;
+}
+
+.percentage{
+    margin-top: 10px;
+    margin-bottom:5px;
+    padding: 5px 10px;
+    color: #FFF;
+    background: #263238;
+    position: relative;
+    border-radius: 4px;
+    text-align: center;
+}
+
+#faceTouchColumn{
+    position:absolute;
+    bottom:0%;
+    left:31.5%;
+    font-size: 16px;
+}
+  
+#faceMaskColumn{
+    position: absolute;
+    bottom:0%;
+    left:55.5%;
+    font-size: 16px;
+    
+    
+
+}
+/* Target/Achievement cards */
+
+
+#cardContainer {
+    position: absolute;
+    height: 28%;
+    width: 41%;
+    top: 68%;
+    left: 47.5%;
+    display: flex;
+    font-family: 'Open Sans', sans-serif;
+    }
+  
+#card {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: #17141d;
+    opacity: 0.93;
+    border-radius: 10px;
+    box-shadow: -0.5rem 0 1.5rem #000;
+    /*   margin-left: -50px; */
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+}
+
+#card:not(:first-child) {
+    margin-left: -50px;
+}
+
+#card:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+}
+
+#card:hover ~ #card {
+    position: relative;
+    left: 50px;
+    transition: 0.4s ease-out;
+}
+
+#cardText p {
+    position:absolute;
+    top:45%;
+    color:white;
+    font-size: 18px;
+    display: none;
+}
+
+#cardTitle {
+    color: white;
+    font-weight: 300;
+    font-size:20px;
+    position: absolute;
+    left: 20px;
+    top: 8%;
+}
+
+#bar {
+    position: absolute;
+    top: 34%;
+    left: 10%;
+    height: 5px;
+    width: 80%;
+}
+
+#emptybar {
+    background-color: #2e3033;
+    width: 100%;
+    height: 100%;
+}
+
+#filledbar {
+    position: absolute;
+    top: 0px;
+    z-index: 3;
+    width: 0px;
+    height: 100%;
+    background: rgb(0,154,217);
+    background: linear-gradient(90deg, rgba(0,154,217,1) 0%, rgba(217,147,0,1) 65%, rgba(255,186,0,1) 100%);
+    transition: 0.6s ease-out;
+}
+
+#card:hover #filledbar {
+width: 80%;
+transition: 0.4s ease-out;
+}
+
+#card:hover #cardText p{
+    display:block;
+    transition: 0.8s ease-in-out ;
+}
+  
+
+@media(max-width:1000px){ /* split screen or narrow window */ 
+
+    .title {
+        color:white;
+        font-size: 18px;
+        left:40%;
+        top:5px;
+        padding: 3px 5px 3px 5px;
+    
+    } 
+    
+    #notificationMode{
+        position:absolute;
+        left:56%;
+        top:60%;
+        padding: 6px 10px;
+        font-size: 13px;        
+    }
+
+    #perfectPosture {
+        position:absolute;
+        left:20%;
+        top:25%;
+        padding:6px 12px;
+        font-size: 13px;      
+    }        
+
+    #timer{
+        position:absolute;
+        top:38%;
+        left:13%;
+        padding:7px 13px;
+        font-size: 13px;
+    }
+
+    #faceTouch{
+        position:absolute;
+        left:2%;
+        top:23%;
+        padding:7px 9px;
+        font-size: 13px;
+    }
+    
+    #maskPrompt{
+        position:absolute;
+        left:2%;
+        top:58%;
+        padding:7px 9px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    
+    /* Carousel */
+    #myCarousel{
+        position: absolute;
+        left: 45.5%;
+        top:8%;
+        height:47%;
+        width:41%;
+    }
+
+    /* NOMOI GRAPHS  */
+
+    #nomoiLog{
+        width: 88%;
+        height: 94%;
+        position: relative;
+        left:20px;
+        top:7px;    
+        
+    }
+
+    #ergonomicsBox{
+        position: relative;
+        top:-2%;
+        height:93%
+    }
+
+    #postureTimerGauges{
+        width: 400px;
+        height: 100px;
+        position: relative; 
+        left:27%;   
+        top:5%;
+    }
+
+    #hydrationDistanceGauges{
+        width: 400px;
+        height: 100px;
+        position: relative; 
+        top: 5%;
+        left:27%;   
+    }
+
+    /* vertical gauges */
+    #covidBox{
+        position: relative;
+        top:-3%;
+        height:93%;
+        width:100%;
+    }
+    .outer-wrapper1{
+        display: inline-block;
+        margin: 5px 10px;
+        padding: 20px 15px 22px 15px;
+        min-width: 6%;
+        height:70%;
+        position: relative;
+        left:20%;
+        top:-5%;
+    }
+
+    .outer-wrapper2{
+        display: inline-block;
+        margin: 5px 10px;
+        padding: 20px 15px 22px 15px;
+        min-width: 6%;
+        height:70%;
+        position: relative;
+        left:30%;
+        top:-5%;
+    }
+    
+    .column-wrapper{
+        height: 90%;
+        width: 70%;
+    }
+
+    .column1{
+        width: 100%;
+        height: 50%;
+    }
+
+    .column2{
+        width: 100%;
+        height: 55%;
+    }
+
+    .percentage{
+        margin-top: 8px;
+        margin-bottom:5px;
+        padding: 3px 5px 3px 5px;
+        position: relative;
+        font-size: 12px;
+    }
+
+    #faceTouchColumn{
+        position:absolute;
+        bottom:0%;
+        left:22%;
+        font-size: 14px;
+    }
+    
+    #faceMaskColumn{
+        position: absolute;
+        bottom:0%;
+        left:53%;
+        font-size: 14px;
+        
+    }    
+
+    
+    #cardContainer {
+    left: 47%;
+    }
+
+    #cardText p {
+        position:absolute;
+        top:45%;
+        color:white;
+        font-size: 13px;
+        display: none;
+    }
+
+    #cardTitle {
+        color: white;
+        font-weight: 300;
+        font-size:14px;
+        position: absolute;
+        left: 20px;
+        top: 0%;
+    }
+    
+    #bar {
+        position: absolute;
+        top: 34%;
+        left: 10%;
+        height: 5px;
+        width: 80%;
+    }
+    
+} 
+
+@media(max-height:790px) and (min-width:1250px){ /* for MAC 2560 by 1600 */
+    
+    #perfectPosture {
+        position:absolute;
+        left:24.5%;
+        top:25%;
+        padding:6px 12px;
+        font-size: 13px;      
+    }        
+        
+    #min{
+        position:absolute;
+        left:22%;
+        top:65%;
+        font-size:11.5px;
+        padding: 2px 4px;
+    }         
+    
+    #max{
+        position:absolute;
+        left:68%;
+        top:65%;
+        font-size:11.5px;
+        padding: 2px 4px;
+    }
+
+    #notificationMode{
+        position:absolute;
+        left:61%;
+        top:59%;
+        padding: 8px 12px;
+        font-size: 13px;        
+    }
+
+    #timer{
+        position:absolute;
+        top:36%;
+        left:17%;
+        padding:9px 16px;
+        font-size: 13px;
+    }
+
+    #faceTouch{
+        position:absolute;
+        left:2%;
+        top:23%;
+        padding:7px 9px;
+        font-size: 13px;
+    }
+    
+    #maskPrompt{
+        position:absolute;
+        left:2%;
+        top:58%;
+        padding:7px 9px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    /* Carousel */
+    #myCarousel{
+        position: absolute;
+        left: 47.5%;
+        top:7%;
+        height:47%;
+        width:41%;
+    }
+
+    /* NOMOI GRAPHS  */
+
+    #nomoiLog{
+        width: 83%;
+        height: 95%;
+        position: relative;
+        left:50px;
+        top:10px;    
+        
+    }
+
+    #ergonomicsBox{
+        height:95%
+    }
+
+    #postureTimerGauges{
+        width: 370px;
+        height: 120px;
+        position: relative; 
+        left:26%;   
+        top:0%;
+    }
+
+    #hydrationDistanceGauges{
+        width: 370px;
+        height: 120px;
+        position: relative; 
+        left:26%;   
+    }
+
+    /* vertical gauges */
+    #covidBox{
+        height:90%;
+        width:100%;
+    }
+    .outer-wrapper1{
+        display: inline-block;
+        margin: 5px 10px;
+        padding: 20px 15px 22px 15px;
+        min-width: 10%;
+        height:70%;
+        position: relative;
+        left:31%;
+    }
+
+    .outer-wrapper2{
+        display: inline-block;
+        margin: 5px 10px;
+        padding: 20px 15px 22px 15px;
+        min-width: 10%;
+        height:70%;
+        position: relative;
+        left:38%;
+    }
+    
+    .column-wrapper{
+        height: 90%;
+        width: 70%;
+    }
+
+    .column1{
+        width: 100%;
+        height: 50%;
+    }
+
+    .column2{
+        width: 100%;
+        height: 55%;
+    }
+
+    .percentage{
+        margin-top: 8px;
+        margin-bottom:5px;
+        padding: 4px 7px;
+        position: relative;
+    }
+
+    #faceTouchColumn{
+        position:absolute;
+        bottom:0%;
+        left:31%;
+        font-size: 16px;
+    }
+    
+    #faceMaskColumn{
+        position: absolute;
+        bottom:0%;
+        left:55.5%;
+        font-size: 16px;
+        
+    }    
+    
+    #cardContainer {
+        position: absolute;
+        height: 28%;
+        width: 41%;
+        top: 67%;
+        left: 47.5%;
+        display: flex;
+        }
+      
+    #card {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        background-color: #17141d;
+        position: relative;
+        left: 0px;
+    }
+        
+    #cardText p {
+        position:absolute;
+        top:45%;
+        color:white;
+        font-size: 16px;
+        display: none;
+    }
+    
+    #cardTitle {
+        color: white;
+        font-weight: 300;
+        font-size:18px;
+        position: absolute;
+        left: 20px;
+        top: 8%;
+    }
+    
+}
+
+@media(max-height:695px) and (max-width:1150px){ /*target 1080p x 1440 */
+    .title {
+        color:white;
+        font-size: 17px;
+        left:43%;
+        top:7px;
+        padding: 3px 5px 3px 5px;
+    
+    }
+    
+    .openbtn {
+        position:fixed; /*stays on top right irrespective of screen size*/
+        top:0;
+        right:0;
+        font-size: 14px;
+        cursor: pointer;
+        color: white;
+        padding: 7px 10px;
+    }
+    
+    
+    .logout {
+        height: 30px;
+        width: 75px;
+        border: none;
+        border-radius: 12px;
+        color: #eee;
+        font-size: 14px;
+        top:45px;
+        right: 0px;
+        transition: 0.5s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding-top: 1px;
+    }
+    
+    #perfectPosture {
+        position:absolute;
+        left:22.5%;
+        top:25%;
+        padding:5px 9px;
+        font-size: 11px;      
+    }        
+        
+    #min{
+        position:absolute;
+        left:22%;
+        top:68%;
+        font-size:10px;
+        padding: 2px 2px;
+    }         
+    
+    #max{
+        position:absolute;
+        left:68%;
+        top:68%;
+        font-size:10.5px;
+        padding: 2px 2px;
+    }
+    
+    .glow-on-hover { /* pause button */
+        width:  20%;
+        height: 10%;
+        border: none;
+        outline: none;
+        color: black;
+        font-size: 0.22em;
+        font-weight:bold;
+        cursor: pointer;
+        position: absolute;
+        top:10%;
+        left:42%;
+        z-index: 0;
+        border-radius: 10px;
+        display:none;
+    }
+
+
+    #notificationMode{
+        position:absolute;
+        left:58%;
+        top:60%;
+        padding: 6px 10px;
+        font-size: 11.5px;        
+    }
+
+    #timer{
+        position:absolute;
+        top:36%;
+        left:14%;
+        padding:7px 14px;
+        font-size: 11px;
+    }
+
+    #faceTouch{
+        position:absolute;
+        left:2%;
+        top:23%;
+        padding:7px 9px;
+        font-size: 11px;
+    }
+    
+    #maskPrompt{
+        position:absolute;
+        left:2%;
+        top:58%;
+        padding:7px 9px;
+        font-size: 11px;
+    }
+
+    /* Carousel */
+    #myCarousel{
+        position: absolute;
+        left: 45.5%;
+        top:8%;
+        height:47%;
+        width:41%;
+    }
+
+    /* NOMOI GRAPHS  */
+
+    #nomoiLog{
+        width: 88%;
+        height: 95%;
+        position: relative;
+        left:20px;
+        top:10px;    
+        
+    }
+
+    #ergonomicsBox{
+        height:90%
+    }
+
+    #postureTimerGauges{
+        width: 370px;
+        height: 100px;
+        position: relative; 
+        left:26%;   
+        top:0%;
+    }
+
+    #hydrationDistanceGauges{
+        width: 370px;
+        height: 90px;
+        position: relative; 
+        left:26%;   
+    }
+
+    /* vertical gauges */
+    #covidBox{
+        height:90%;
+        width:100%;
+    }
+    .outer-wrapper1{
+        display: inline-block;
+        margin: 5px 10px;
+        padding: 20px 15px 22px 15px;
+        min-width: 8%;
+        height:70%;
+        position: relative;
+        left:22%;
+    }
+
+    .outer-wrapper2{
+        display: inline-block;
+        margin: 5px 10px;
+        padding: 20px 15px 22px 15px;
+        min-width: 8%;
+        height:70%;
+        position: relative;
+        left:31%;
+    }
+    
+    .column-wrapper{
+        height: 90%;
+        width: 70%;
+    }
+
+    .column1{
+        width: 100%;
+        height: 50%;
+    }
+
+    .column2{
+        width: 100%;
+        height: 55%;
+    }
+
+    .percentage{
+        margin-top: 8px;
+        margin-bottom:5px;
+        padding: 4px 7px;
+        position: relative;
+    }
+
+    #faceTouchColumn{
+        position:absolute;
+        bottom:-5%;
+        left:24%;
+        font-size: 14px;
+    }
+    
+    #faceMaskColumn{
+        position: absolute;
+        bottom:-5%;
+        left:58%;
+        font-size: 14px;
+        
+    }    
+    
+    #cardContainer {
+        position: absolute;
+        height: 25%;
+        width: 41%;
+        top: 70%;
+        left: 45.5%;
+        display: flex;
+        }
+      
+    #card {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        background-color: #17141d;
+        position: relative;
+        left: 0px;
+    }
+        
+    #cardText p {
+        position:absolute;
+        top:45%;
+        color:white;
+        font-size: 13px;
+        display: none;
+    }
+    
+    #cardTitle {
+        color: white;
+        font-weight: 300;
+        font-size:14px;
+        position: absolute;
+        left: 20px;
+        top: -1%;
+
+    }
+
+    #bar {
+        position: absolute;
+        top: 30%;
+        left: 10%;
+        height: 5px;
+        width: 80%;
+    }
+    
+}
+
+@media(max-height:600px){ /* for 1920 by 1080p */ 
+
+    .title {
+        color:white;
+        font-size: 16px;
+        left:43%;
+        top:5px;
+        padding: 3px 5px 3px 5px;
+    
+    }
+    
+    .openbtn {
+        position:fixed; /*stays on top right irrespective of screen size*/
+        top:0;
+        right:0;
+        font-size: 13px;
+        cursor: pointer;
+        color: white;
+        padding: 7px 10px;
+    }
+    
+    .logout {
+        height: 30px;
+        width: 75px;
+        border: none;
+        border-radius: 12px;
+        color: #eee;
+        font-size: 13px;
+        top:40px;
+        right: 0px;
+        transition: 0.5s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding-top: 1px;
+    }
+    
+    #covidIcon{
+        display: block;
+        width:37%;
+        height:37%;
+        position:absolute;
+        top:32%;
+        left:22%;
+        
+    }
+
+    #notificationMode{
+        position:absolute;
+        left:60%;
+        top:60%;
+        padding: 6px 10px;
+        font-size: 11.5px;        
+    }
+    
+    /* Carousel */
+    #myCarousel{
+        position: absolute;
+        left: 46.5%;
+        top:8%;
+        height:47%;
+        width:41%;
+    }
+
+    /* NOMOI GRAPHS  */
+
+    #nomoiLog{
+        width: 88%;
+        height: 94%;
+        position: relative;
+        left:20px;
+        top:7px;    
+        
+    }
+
+    #ergonomicsBox{
+        position: relative;
+        top:-2%;
+        height:93%
+    }
+
+    #postureTimerGauges{
+        width: 400px;
+        height: 90px;
+        position: relative; 
+        left:30%;   
+        top:-3%;
+    }
+
+    #hydrationDistanceGauges{
+        width: 400px;
+        height: 90px;
+        position: relative; 
+        top: -5%;
+        left:30%;   
+    }
+
+    /* vertical gauges */
+    #covidBox{
+        position: relative;
+        top:-3%;
+        height:93%;
+        width:100%;
+    }
+    .outer-wrapper1{
+        display: inline-block;
+        margin: 5px 10px;
+        padding: 20px 15px 22px 15px;
+        min-width: 6%;
+        height:70%;
+        position: relative;
+        left:25%;
+        top:-5%;
+    }
+
+    .outer-wrapper2{
+        display: inline-block;
+        margin: 5px 10px;
+        padding: 20px 15px 22px 15px;
+        min-width: 6%;
+        height:70%;
+        position: relative;
+        left:34%;
+        top:-5%;
+    }
+    
+    .column-wrapper{
+        height: 90%;
+        width: 70%;
+    }
+
+    .column1{
+        width: 100%;
+        height: 50%;
+    }
+
+    .column2{
+        width: 100%;
+        height: 55%;
+    }
+
+    .percentage{
+        margin-top: 8px;
+        margin-bottom:5px;
+        padding: 3px 5px 3px 5px;
+        position: relative;
+        font-size: 12px;
+    }
+
+    #faceTouchColumn{
+        position:absolute;
+        bottom:-7%;
+        left:27%;
+        font-size: 14px;
+    }
+    
+    #faceMaskColumn{
+        position: absolute;
+        bottom:-7%;
+        left:56%;
+        font-size: 14px;
+        
+    }    
+
+    
+    #cardContainer {
+    left: 47%;
+    }
+
+    #cardText p {
+        position:absolute;
+        top:45%;
+        color:white;
+        font-size: 11px;
+        display: none;
+    }
+
+    #cardTitle {
+        color: white;
+        font-weight: 300;
+        font-size:13px;
+        position: absolute;
+        left: 20px;
+        top: -3%;
+    }
+    
+    #bar {
+        position: absolute;
+        top: 34%;
+        left: 10%;
+        height: 5px;
+        width: 80%;
+    }
+    
+}
