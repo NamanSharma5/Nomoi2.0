@@ -87,277 +87,276 @@ let previousHistoryIndex;
 
 
 p5.disableFriendlyErrors = true;
-function setup() {
+-function setup() {
 
-     canvasWidth=(window.innerWidth/1500)*1.1*550; //OG 640*480
-     canvasHeight=(window.innerHeight/900)*1.1*300;
+    canvasWidth=(window.innerWidth/1500)*1.1*550; //OG 640*480
+    canvasHeight=(window.innerHeight/900)*1.1*300;
 
+  
+    createCanvas(canvasWidth,canvasHeight); 
+    video = createCapture(VIDEO);
+    video.hide();    
+    
+    
+   if(localStorage.compatibleMode == 0){
+       //normal mode
+       var options = { 
+         architecture: 'MobileNetV1',
+         imageScaleFactor: 0.40,  // fast,newish mode = 0.6
+         outputStride: 16,
+         minConfidence: 0.3,
+         scoreThreshold: 0.4,
+         maxPoseDetections: 3, 
+         detectionType: 'multiple', 
+         multiplier: 0.75, 
+         quantBytes:2, //fast,newish mode = 4
+       };
+
+     frameRate(60)        
    
-     createCanvas(canvasWidth,canvasHeight); 
-     video = createCapture(VIDEO);
-     video.hide();    
-     
-     
-    if(localStorage.compatibleMode == 0){
-        //normal mode
-        var options = { 
-          architecture: 'MobileNetV1',
-          imageScaleFactor: 0.40,  // fast,newish mode = 0.6
-          outputStride: 16,
-          minConfidence: 0.3,
-          scoreThreshold: 0.4,
-          maxPoseDetections: 3, 
-          detectionType: 'multiple', 
-          multiplier: 0.75, 
-          quantBytes:2, //fast,newish mode = 4
-        };
+   }else{
+           var options ={
+               //compatibleMode
+               architecture: 'MobileNetV1',
+               imageScaleFactor: 0.28,  
+               outputStride: 16,
+               minConfidence: 0.27,
+               scoreThreshold: 0.4,
+               inputResolution:257, // normal =289  161, 193, 257, 289, 321, 353, 385, 417, 449, 481 & 513
+               maxPoseDetections: 3, 
+               detectionType: 'multiple', 
+               multiplier: 0.50,
+               quantBytes:2, //fast,newish mode = 4
+           }
+           console.log('compatible mode')
+           //change minimum threshold for face mask prompts
+           frameRate(30)
+           document.getElementById('posture_slider').value = 500;
+       }
 
-      frameRate(60)        
+    //iaNS = ml5.poseNet(video,'single',modelLoaded);
+    iaNS = ml5.poseNet(video,options,modelLoaded);
+    iaNS.on('pose', gotPoses);
+    fixed=0;
+
+   /* DIVIDE DOWN BY 100 FOR USER EASE + remember last position */
+   
+    device_time = new Date();
+
+    timer_on = 0;
+    previous_session_close_second = -50;
+    previous_session_close_minute = -50;
+    new_session=0;
+    session_start_second = 0;
+    session_start_minute = 0;
+    current_session_previous_second = 0;
+    check_consecutive = true;  
+    reset_timer=false;
     
+    firstName = document.getElementById("firstName").innerHTML
+    
+    Push.create("Hi " + firstName + ". ",{
+       body:"Click an icon to get started",
+       timeout:3000,
+       silent:true,
+       onClick: function () {
+          window.focus();
+          this.close();
+           }
+       }) 
+   
+    left_hand_mode = 0
+    if(localStorage.tooclosesetting == 1){
+       document.getElementById("leftHandMode").innerHTML = "Right Hand Mode";
+      left_hand_mode=localStorage.leftHandMode
+    }
+
+    too_close = 0;
+    if(localStorage.tooclosesetting == 1){
+       document.getElementById("tooCloseButton").innerHTML = "Too Close to Screen Notifications: ON";
+       document.getElementById("tooCloseButton").style.background = "#c0ffb8";
+       too_close=localStorage.tooclosesetting
+    }
+
+    talking_timer = 0
+    if (localStorage.talkingtimersetting == 1){
+       document.getElementById("voiceMessage").innerHTML = "Talking Timer Notification: ON";
+       document.getElementById("voiceMessage").style.background = "#c0ffb8";
+       talking_timer=localStorage.tooclosesetting
+    }
+    soundFormats('m4a')
+    voice_note = loadSound('voice_note_S.m4a')
+    
+   //let video_off;
+    
+    min_shoulder_confidence = 0.58;
+
+    /* if (parseInt(localStorage.slidersetting)!=325){ //NEED TO INSERT CODE TO REMEMEBER LAST SLIDER
+       document.getElementById("posture_slider").value = "325";
     }else{
-            var options ={
-                //compatibleMode
-                architecture: 'MobileNetV1',
-                imageScaleFactor: 0.28,  
-                outputStride: 16,
-                minConfidence: 0.27,
-                scoreThreshold: 0.4,
-                inputResolution:257, // normal =289  161, 193, 257, 289, 321, 353, 385, 417, 449, 481 & 513
-                maxPoseDetections: 3, 
-                detectionType: 'multiple', 
-                multiplier: 0.50,
-                quantBytes:2, //fast,newish mode = 4
-            }
-            console.log('compatible mode')
-            //change minimum threshold for face mask prompts
-            frameRate(30)
-            document.getElementById('posture_slider').value = 500;
-        }
+       document.getElementById("posture_slider").value = parseint(localStorage.slidersetting);
+    } */
 
-     //iaNS = ml5.poseNet(video,'single',modelLoaded);
-     iaNS = ml5.poseNet(video,options,modelLoaded);
-     iaNS.on('pose', gotPoses);
-     fixed=0;
+    faceTouchActive = 0;
+    faceTouchpreviousSecond = 100;
+    faceTouchWarningDuration = 3;
 
-    /* DIVIDE DOWN BY 100 FOR USER EASE + remember last position */
+    scaleWidth = -1;
+    scaleHeight = 1;
+    frameRate(60)
+
+    maskPromptActive = 0;
+
+    rightBoundary = 20;
+    leftBoundary = canvasWidth - (canvasWidth/9.4)
+    topBoundary = 15;
+    bottomBoundary = canvasHeight - (canvasHeight/8.8) // this & left less useful with new small canvas
+    if (canvasWidth < 475){ // CSS media queries
+       leftBoundary = canvasWidth + 20;
+    }    
+   
+    if (canvasHeight < 475){
+       bottomBoundary = canvasHeight + 100;
+    }
+    else if (canvasHeight < 300){
+        bottomBoundary = canvasHeight + 150;
+    }
     
-     device_time = new Date();
 
-     timer_on = 0;
-     previous_session_close_second = -50;
-     previous_session_close_minute = -50;
-     new_session=0;
-     session_start_second = 0;
-     session_start_minute = 0;
-     current_session_previous_second = 0;
-     check_consecutive = true;  
-     reset_timer=false;
-     
-     firstName = document.getElementById("firstName").innerHTML
-     
-     Push.create("Hi " + firstName + ". ",{
-        body:"Click an icon to get started",
-        timeout:3000,
-        silent:true,
-        onClick: function () {
-           window.focus();
-           this.close();
-            }
-        }) 
-    
-     left_hand_mode = 0
-     if(localStorage.tooclosesetting == 1){
-        document.getElementById("leftHandMode").innerHTML = "Right Hand Mode";
-       left_hand_mode=localStorage.leftHandMode
-     }
-
-     too_close = 0;
-     if(localStorage.tooclosesetting == 1){
-        document.getElementById("tooCloseButton").innerHTML = "Too Close to Screen Notifications: ON";
-        document.getElementById("tooCloseButton").style.background = "#c0ffb8";
-        too_close=localStorage.tooclosesetting
-     }
-
-     talking_timer = 0
-     if (localStorage.talkingtimersetting == 1){
-        document.getElementById("voiceMessage").innerHTML = "Talking Timer Notification: ON";
-        document.getElementById("voiceMessage").style.background = "#c0ffb8";
-        talking_timer=localStorage.tooclosesetting
-     }
-     soundFormats('m4a')
-     voice_note = loadSound('voice_note_S.m4a')
-     
-    //let video_off;
-     
-     min_shoulder_confidence = 0.58;
-
-     /* if (parseInt(localStorage.slidersetting)!=325){ //NEED TO INSERT CODE TO REMEMEBER LAST SLIDER
-        document.getElementById("posture_slider").value = "325";
-     }else{
-        document.getElementById("posture_slider").value = parseint(localStorage.slidersetting);
-     } */
-
-     faceTouchActive = 0;
-     faceTouchpreviousSecond = 100;
-     faceTouchWarningDuration = 3;
-
-     scaleWidth = -1;
-     scaleHeight = 1;
-     frameRate(60)
-
-     maskPromptActive = 0;
-
-     rightBoundary = 20;
-     leftBoundary = canvasWidth - (canvasWidth/9.4)
-     topBoundary = 15;
-     bottomBoundary = canvasHeight - (canvasHeight/8.8) // this & left less useful with new small canvas
-     if (canvasWidth < 475){ // CSS media queries
-        leftBoundary = canvasWidth + 20;
-     }    
-    
-     if (canvasHeight < 475){
-        bottomBoundary = canvasHeight + 100;
-     }
-     else if (canvasHeight < 300){
-         bottomBoundary = canvasHeight + 150;
-     }
-     
-
-     postureNotification = 1;
-     faceMaskNotification = 1;
-     tooCloseMessages = 1;
-     hydrationTrackerClickLogged = 0;
-     incrementScreenDistanceCheck = 1;
-    //auto logout - does not work when you close the window and reroute via direct url
-    //setTimeout(window.location.href = "https://www.nomoi.org.uk/logout",7200000)//2 hours in ms
+    postureNotification = 1;
+    faceMaskNotification = 1;
+    tooCloseMessages = 1;
+    hydrationTrackerClickLogged = 0;
+    incrementScreenDistanceCheck = 1;
+   //auto logout - does not work when you close the window and reroute via direct url
+   //setTimeout(window.location.href = "https://www.nomoi.org.uk/logout",7200000)//2 hours in ms
 
 
-     notificationModeOn = 1;
-     //
-     // DATA ANALYTICS
-     //
+    notificationModeOn = 1;
+    //
+    // DATA ANALYTICS
+    //
 
-     currentSessionStart = performance.now();
+    currentSessionStart = performance.now();
 
-     $.get("/user",function(data){
-        userData = data.user
-        previousHistoryIndex = Number(userData.history.length - 1)        
+    $.get("/user",function(data){
+       userData = data.user
+       previousHistoryIndex = Number(userData.history.length - 1)        
+       
+       if(userData.history.length == 0){
+           faceTouchPreviousScore = Number(50);
+           faceMaskPreviousScore = Number(50);
+           postureTrackerPreviousScore = Number(50);
+           hydrationTrackerPreviousScore = Number(50);
+           screenDistancePreviousScore = Number(50);
+           screenTimerPreviousScore = Number(50);
+           ergonomicPreviousScore = Number(50);
+           covid19PreviousScore = Number(50);
+           nomoiPreviousScore = Number(50);
+       }else{
+          faceTouchPreviousScore = Number(userData.history[previousHistoryIndex].faceTouchScore);
+          faceMaskPreviousScore = Number(userData.history[previousHistoryIndex].faceMaskScore);
+          postureTrackerPreviousScore = Number(userData.history[previousHistoryIndex].postureTrackerScore);
+          hydrationTrackerPreviousScore = Number(userData.history[previousHistoryIndex].hydrationTrackerScore);
+          screenDistancePreviousScore = Number(userData.history[previousHistoryIndex].screenDistanceScore);
+          screenTimerPreviousScore = Number(userData.history[previousHistoryIndex].screenTimerScore);
+          ergonomicPreviousScore = Number(userData.history[previousHistoryIndex].ergonomicScore);
+          covid19PreviousScore = Number(userData.history[previousHistoryIndex].covid19Score);
+          nomoiPreviousScore = Number(userData.history[previousHistoryIndex].nomoiScore);
         
-        if(userData.history.length == 0){
-            faceTouchPreviousScore = Number(50);
-            faceMaskPreviousScore = Number(50);
-            postureTrackerPreviousScore = Number(50);
-            hydrationTrackerPreviousScore = Number(50);
-            screenDistancePreviousScore = Number(50);
-            screenTimerPreviousScore = Number(50);
-            ergonomicPreviousScore = Number(50);
-            covid19PreviousScore = Number(50);
-            nomoiPreviousScore = Number(50);
-        }else{
-           faceTouchPreviousScore = Number(userData.history[previousHistoryIndex].faceTouchScore);
-           faceMaskPreviousScore = Number(userData.history[previousHistoryIndex].faceMaskScore);
-           postureTrackerPreviousScore = Number(userData.history[previousHistoryIndex].postureTrackerScore);
-           hydrationTrackerPreviousScore = Number(userData.history[previousHistoryIndex].hydrationTrackerScore);
-           screenDistancePreviousScore = Number(userData.history[previousHistoryIndex].screenDistanceScore);
-           screenTimerPreviousScore = Number(userData.history[previousHistoryIndex].screenTimerScore);
-           ergonomicPreviousScore = Number(userData.history[previousHistoryIndex].ergonomicScore);
-           covid19PreviousScore = Number(userData.history[previousHistoryIndex].covid19Score);
-           nomoiPreviousScore = Number(userData.history[previousHistoryIndex].nomoiScore);
-         
-        };
+       };
 
-        // GOOGLE CHARTS 
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+       // GOOGLE CHARTS 
+       google.charts.load('current', {'packages':['corechart']});
+       google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {/*
-        var data = google.visualization.arrayToDataTable([
-        ['Year', 'Sales', 'Expenses'],
-        ['2004',  1000,      400],
-        ['2005',  1170,      460],
-        ['2006',  660,       1120],
-        ['2007',  1030,      540]
-        ]);*/
+       function drawChart() {/*
+       var data = google.visualization.arrayToDataTable([
+       ['Year', 'Sales', 'Expenses'],
+       ['2004',  1000,      400],
+       ['2005',  1170,      460],
+       ['2006',  660,       1120],
+       ['2007',  1030,      540]
+       ]);*/
 
-        var data = new google.visualization.DataTable();
-        data.addColumn('string','Date');
-        data.addColumn('number','Nomoi Score');
-        data.addColumn('number','Ergonomic Score');
-        data.addColumn('number','Covid-19 Score');
+       var data = new google.visualization.DataTable();
+       data.addColumn('string','Date');
+       data.addColumn('number','Nomoi Score');
+       data.addColumn('number','Ergonomic Score');
+       data.addColumn('number','Covid-19 Score');
 
-        data.addRows(userData.history.length)
-        for (j = 0;j < userData.history.length; j++ ){
-            data.setCell(j,0,userData.history[j].date)
-        };
-        for (j = 0;j < userData.history.length; j++ ){
-            data.setCell(j,1,userData.history[j].nomoiScore)
-        };
-        for (j = 0;j < userData.history.length; j++ ){
-            data.setCell(j,2,userData.history[j].ergonomicScore)
-        };
-        for (j = 0;j < userData.history.length; j++ ){
-            data.setCell(j,3,userData.history[j].covid19Score)
-        };
+       data.addRows(userData.history.length)
+       for (j = 0;j < userData.history.length; j++ ){
+           data.setCell(j,0,userData.history[j].date)
+       };
+       for (j = 0;j < userData.history.length; j++ ){
+           data.setCell(j,1,userData.history[j].nomoiScore)
+       };
+       for (j = 0;j < userData.history.length; j++ ){
+           data.setCell(j,2,userData.history[j].ergonomicScore)
+       };
+       for (j = 0;j < userData.history.length; j++ ){
+           data.setCell(j,3,userData.history[j].covid19Score)
+       };
 
-        var legendSize = 13;
-        var hAxisSize = 14;
-        var chartAreaHeight = 70 +'%'
-        if(window.innerWidth < 1100){
-            legendSize = 10;
-            hAxisSize = 11.5;
-        }
-        if(window.innerHeight < 601 ){
-            chartAreaHeight = 63 + '%'
-        }
+       var legendSize = 13;
+       var hAxisSize = 14;
+       var chartAreaHeight = 70 +'%'
+       if(window.innerWidth < 1100){
+           legendSize = 10;
+           hAxisSize = 11.5;
+       }
+       if(window.innerHeight < 601 ){
+           chartAreaHeight = 63 + '%'
+       }
 
-        var options = {
-             title: 'Nomoi Log',
-             titleTextStyle:{
-                fontSize:14
-             },
-             curveType: 'function',
-             backgroundColor: {'fill': '#E6EAEE', 'fillOpacity': '0.8' },
-             chartArea:{left:30,top:20,width:"90%",height:chartAreaHeight},
-             legend: { 
-                 position: 'bottom',
-                 textStyle :{
-                    fontSize: legendSize
-                  }
-                 },
-             hAxis:{
+       var options = {
+            title: 'Nomoi Log',
+            titleTextStyle:{
+               fontSize:14
+            },
+            curveType: 'function',
+            backgroundColor: {'fill': '#E6EAEE', 'fillOpacity': '0.8' },
+            chartArea:{left:30,top:20,width:"90%",height:chartAreaHeight},
+            legend: { 
+                position: 'bottom',
                 textStyle :{
-                    fontSize: hAxisSize
+                   fontSize: legendSize
+                 }
                 },
-             },
-             vAxis:{
-                textStyle :{
-                    fontSize: 13
-                }
-             },
-             lineWidth:4,
-             animation:{
-                 startup:true,
-                 duration:3000,
-                 easing:'in'
-             },
-             tooltip:{
-                trigger:'selection'
-             }                 
-            };
+            hAxis:{
+               textStyle :{
+                   fontSize: hAxisSize
+               },
+            },
+            vAxis:{
+               textStyle :{
+                   fontSize: 13
+               }
+            },
+            lineWidth:4,
+            animation:{
+                startup:true,
+                duration:3000,
+                easing:'in'
+            },
+            tooltip:{
+               trigger:'selection'
+            }                 
+           };
 
-            var chart = new google.visualization.LineChart(document.getElementById('nomoiLog'));
+           var chart = new google.visualization.LineChart(document.getElementById('nomoiLog'));
 
-            chart.draw(data, options);
-           
-        }
+           chart.draw(data, options);
+          
+       }
 
 
-     });
+    });
 
-           
-     
+          
+    
 }
-
 function gotPoses(poses){
     
     if (poses.length > 0){
@@ -1238,13 +1237,30 @@ setInterval(
     console.log('ergonomic ' + ergonomicScore)
     console.log('nomoi ' + nomoiScore) */
 
-
 },30000)
 
 
 window.addEventListener('beforeunload', function (e) { 
     //e.preventDefault(); 
     //e.returnValue = '';
+    
+    if(userData.history.length > 3){
+        var cutHistory = {
+            username:document.getElementById('userEmail').innerText,
+        }
+        $.ajax({
+            type:"POST",
+            url:"/cutDB",
+            data: JSON.stringify(cutHistory),
+            contentType:'application/json',
+            success:function(data){
+                console.log('success: ' + data)
+            },
+            error:function(e){
+                console.log(e);
+            }       
+            });
+    }
 
     currentSessionLength = Number.parseFloat((performance.now() - currentSessionStart ) / 60000).toFixed(0);
     if(timer_on==1){
@@ -1297,23 +1313,6 @@ window.addEventListener('beforeunload', function (e) {
         }       
         });
 
-        if(userData.history.length > 4){
-            var cutHistory = {
-                username:document.getElementById('userEmail').innerText,
-            }
-            $.ajax({
-                type:"POST",
-                url:"/cutDB",
-                data: JSON.stringify(cutHistory),
-                contentType:'application/json',
-                success:function(data){
-                    console.log('success: ' + data)
-                },
-                error:function(e){
-                    console.log(e);
-                }       
-                });
-        }
     }
     
 }); 
