@@ -36,7 +36,7 @@ app.use(passport.session());
 
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
-uri = 'mongodb+srv://Shams:langley09@shams.hx5li.mongodb.net/live?retryWrites=true&w=majority'
+// uri = // removed URI as REPO is public
 
 mongoose.connect( uri, {useNewUrlParser: true, useUnifiedTopology: true}, () =>
 console.log("connected"));    
