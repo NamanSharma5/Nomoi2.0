@@ -1,214 +1,265 @@
 <head>
-	<title>NOMOI Register</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="Description" content="Sign up for FREE to try out NOMOI and see how it can help improve your health and safety with our COVID-19 and computer ergonomics features.">
+  <title>NOMOI Register</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="Description"
+    content="Sign up for FREE to try out NOMOI and see how it can help improve your health and safety with our COVID-19 and computer ergonomics features."
+  />
 
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<style>
-		#error-message{
-			text-align: center;
-			font-weight: 700;
-			color: #fd2121;
-		}
+  <!--===============================================================================================-->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+  />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="css/util.css" />
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <style>
+    #error-message {
+      text-align: center;
+      font-weight: 700;
+      color: #fd2121;
+    }
 
-		#slowMode{
-			margin-top: 10px;
-			font-size: 13px;
-			padding: 2px;
-		}
+    #slowMode {
+      margin-top: 10px;
+      font-size: 13px;
+      padding: 2px;
+    }
 
-		.toggle {
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-		width: 50px;
-		height: 25px;
-		display: inline-block;
-		position: relative;
-		border-radius: 30px;
-		overflow: hidden;
-		outline: none;
-		border: none;
-		cursor: pointer;
-		background-color: #707070;
-		transition: background-color ease 0.3s;
-		}
+    .toggle {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 50px;
+      height: 25px;
+      display: inline-block;
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      background-color: #707070;
+      transition: background-color ease 0.3s;
+    }
 
-		.toggle:before {
-		content: "ON OFF";
-		display: block;
-		position: absolute;
-		z-index: 2;
-		width: 20px;
-		height: 18px;
-		background: #fff;
-		left: 2px;/* circle position*/
-		top: 3px;
-		border-radius: 50%;
-		font: 10px/22px Helvetica;
-		font-weight: bold;
-		text-indent: -22px;
-		word-spacing: 26px;/* where word starts in slider*/
-		color: #fff;
-		text-shadow: -1px -1px rgba(0,0,0,0.15);
-		white-space: nowrap;
-		box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-		transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
-		}
+    .toggle:before {
+      content: "ON OFF";
+      display: block;
+      position: absolute;
+      z-index: 2;
+      width: 20px;
+      height: 18px;
+      background: #fff;
+      left: 2px; /* circle position*/
+      top: 3px;
+      border-radius: 50%;
+      font: 10px/22px Helvetica;
+      font-weight: bold;
+      text-indent: -22px;
+      word-spacing: 26px; /* where word starts in slider*/
+      color: #fff;
+      text-shadow: -1px -1px rgba(0, 0, 0, 0.15);
+      white-space: nowrap;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+    }
 
-		.toggle:checked {
-		background-color: #57b846;
-		font: 10px/22px Helvetica;
-		}
+    .toggle:checked {
+      background-color: #57b846;
+      font: 10px/22px Helvetica;
+    }
 
-		.toggle:checked:before {
-		left: 28px; /* how much circle slides */
-		}
-		@media (max-width: 992px) {
-			#slowMode p{
-				font-size: 13px ;
-			}
-		}
+    .toggle:checked:before {
+      left: 28px; /* how much circle slides */
+    }
+    @media (max-width: 992px) {
+      #slowMode p {
+        font-size: 13px;
+      }
+    }
 
-		@media (max-width: 768px) {
-			#slowMode p{
-				font-size: 13px ;
-			}
-		}
+    @media (max-width: 768px) {
+      #slowMode p {
+        font-size: 13px;
+      }
+    }
 
-		@media (max-width: 576px) {
-			#slowMode p{
-				font-size: 12px ;
-			}
+    @media (max-width: 576px) {
+      #slowMode p {
+        font-size: 12px;
+      }
 
-			.toggle {
-			width: 45px;
-			height: 20px;
-			display: inline-block;
-			position: relative;
-			border-radius: 30px;
-			}
+      .toggle {
+        width: 45px;
+        height: 20px;
+        display: inline-block;
+        position: relative;
+        border-radius: 30px;
+      }
 
-			.toggle:before {
-			content: "ON OFF";
-			display: block;
-			position: absolute;
-			z-index: 2;
-			width: 15px;
-			height: 15px;
-			left: 2px;/* circle position*/
-			top: 3px;
-			border-radius: 50%;
-			font: 10px/18px Helvetica;
-			font-weight: bold;
-			text-indent: -22px;
-			word-spacing: 23px;/* where word starts in slider*/
-			}
+      .toggle:before {
+        content: "ON OFF";
+        display: block;
+        position: absolute;
+        z-index: 2;
+        width: 15px;
+        height: 15px;
+        left: 2px; /* circle position*/
+        top: 3px;
+        border-radius: 50%;
+        font: 10px/18px Helvetica;
+        font-weight: bold;
+        text-indent: -22px;
+        word-spacing: 23px; /* where word starts in slider*/
+      }
 
-			.toggle:checked:before {
-			left: 28px; /* how much circle slides */
-			}
-
-		}
-	</style>
-<!--===============================================================================================-->
+      .toggle:checked:before {
+        left: 28px; /* how much circle slides */
+      }
+    }
+  </style>
+  <!--===============================================================================================-->
 </head>
 <body>
-	
-	<div class="limiter">
-		<div class="container-login100">
-        <!-- custom CSS for the register page referred to as LOGIN200 !!! -->    
-			<div class="wrap-login200">
-				<div class="login200-pic " >
-                    <img src="https://share-cdn-prod.azureedge.net/wp-content/uploads/2014/05/CRS505364_IdealPosition_Blogpostinfographic_FINAL.jpg" alt="IMG"> 
-                    <div id="slowMode">
-						<p>Slower / Older Device Mode</p>
-						<input id="compatibleModeCheck" class="toggle" type="checkbox" onclick="compatibleMode()" checked/>
-					</div>
-                    <!--<img src="https://www.chairoffice.co.uk/media/4871/sitting-properly-diagram.jpg" alt="IMG">  -->
-				</div>
+  <div class="limiter">
+    <div class="container-login100">
+      <!-- custom CSS for the register page referred to as LOGIN200 !!! -->
+      <div class="wrap-login200">
+        <div class="login200-pic">
+          <img
+            src="https://share-cdn-prod.azureedge.net/wp-content/uploads/2014/05/CRS505364_IdealPosition_Blogpostinfographic_FINAL.jpg"
+            alt="IMG"
+          />
+          <div id="slowMode">
+            <p>Slower / Older Device Mode</p>
+            <input
+              id="compatibleModeCheck"
+              class="toggle"
+              type="checkbox"
+              onclick="compatibleMode()"
+              checked
+            />
+          </div>
+          <!--<img src="https://www.chairoffice.co.uk/media/4871/sitting-properly-diagram.jpg" alt="IMG">  -->
+        </div>
 
-				<form action = "/register" method = "post">
-					<span class="login100-form-title">
-                         Some More Details Please
-					</span>
+        <form action="/register" method="post">
+          <span class="login100-form-title"> Some More Details Please </span>
 
-					<div class="wrap-input100 validate-input" >
-						<input class="input100" type="text" name="username" id= "username" placeholder="Email" required="required">
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
+          <div class="wrap-input100 validate-input">
+            <input
+              class="input100"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Email"
+              required="required"
+            />
+            <span class="symbol-input100">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+          </div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password" required="required">
-						<!-- <span class="focus-input100"></span> -->
-						<span class="symbol-input100">	
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-                    </div>
+          <div
+            class="wrap-input100 validate-input"
+            data-validate="Password is required"
+          >
+            <input
+              class="input100"
+              type="password"
+              name="password"
+              placeholder="Password"
+              required="required"
+            />
+            <!-- <span class="focus-input100"></span> -->
+            <span class="symbol-input100">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+          </div>
 
-                    <div class="wrap-input100 validate-input" >
-						<input class="input200" type="text" name="firstname" placeholder="Firstname" required="required">
-                    </div>
-                    
-                    <div class="wrap-input100 validate-input" >
-						<input class="input200" type="text" name="surname" placeholder="Surname" required="required">
-					</div>
-					
-					<div class="wrap-input100 validate-input" >
-						<input class="input200" type="number" name="height" placeholder="Height (cm)" required="required">
-                    </div>
-                    
-                    <div class="wrap-input100 validate-input" >
-						<input class="input200" type="text" name="company" placeholder="Company/ Institution">
-					</div>
-					<!--
+          <div class="wrap-input100 validate-input">
+            <input
+              class="input200"
+              type="text"
+              name="firstname"
+              placeholder="Firstname"
+              required="required"
+            />
+          </div>
+
+          <div class="wrap-input100 validate-input">
+            <input
+              class="input200"
+              type="text"
+              name="surname"
+              placeholder="Surname"
+              required="required"
+            />
+          </div>
+
+          <div class="wrap-input100 validate-input">
+            <input
+              class="input200"
+              type="number"
+              name="height"
+              placeholder="Height (cm)"
+              required="required"
+            />
+          </div>
+
+          <div class="wrap-input100 validate-input">
+            <input
+              class="input200"
+              type="text"
+              name="company"
+              placeholder="Company/ Institution"
+            />
+          </div>
+          <!--
 					<div class="wrap-input100 validate-input" >
 						<input class="input200" type="text" name="company" placeholder="Ethnicity">
                     </div>
 					-->
-                    <div class="wrap-input100 validate-input" >
-                        <p>D.O.B</p>
-						<input class="input200" type="date" name="DoB" placeholder="Date of birth" required="required">
-                    </div>
-                    
-					<div class="container-login100-form-btn">
-						<button type = "submit" class="login100-form-btn">
-							Login
-						</button>
-					</div>
+          <div class="wrap-input100 validate-input">
+            <p>D.O.B</p>
+            <input
+              class="input200"
+              type="date"
+              name="DoB"
+              placeholder="Date of birth"
+              required="required"
+            />
+          </div>
 
+          <div class="container-login100-form-btn">
+            <button type="submit" class="login100-form-btn">Login</button>
+          </div>
 
-					<div>
-						<p id="error-message"></p>
-					</div>
-								
-				</form>
-			</div>
-		</div>
-	</div>
-	
+          <div>
+            <p id="error-message"></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script>
-	  document.getElementById('username').value=localStorage.username;
+    document.getElementById("username").value = localStorage.username;
 
-	  if(localStorage.compatibleMode == 0){
-			document.getElementById('compatibleModeCheck').checked = false;
-		}
+    if (localStorage.compatibleMode == 0) {
+      document.getElementById("compatibleModeCheck").checked = false;
+    }
 
-	  function compatibleMode (){
-		  if(document.getElementById('compatibleModeCheck').checked == true){
-			localStorage.setItem("compatibleMode","1")
-		  }else{
-			localStorage.setItem("compatibleMode","0")
-		  }
-	    }
-
-  </script>	
-
+    function compatibleMode() {
+      if (document.getElementById("compatibleModeCheck").checked == true) {
+        localStorage.setItem("compatibleMode", "1");
+      } else {
+        localStorage.setItem("compatibleMode", "0");
+      }
+    }
+  </script>
 </body>

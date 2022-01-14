@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>NOMOI Signup</title>
-    <meta name="Description" content="Sign up for FREE to try out NOMOI and see how it can help improve your health and safety with our COVID-19 and computer ergonomics features.">
+    <meta
+      name="Description"
+      content="Sign up for FREE to try out NOMOI and see how it can help improve your health and safety with our COVID-19 and computer ergonomics features."
+    />
 
-
-
-    <link rel="stylesheet" href="signUpResources/fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="../public/signUpResources/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link
+      rel="stylesheet"
+      href="signUpResources/fonts/material-icon/css/material-design-iconic-font.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../public/signUpResources/fonts/material-icon/css/material-design-iconic-font.min.css"
+    />
     <!-- Main css-->
-    <link rel="stylesheet" href="signUpResources/css/style.css">
-    <link rel="stylesheet" href="../public/signUpResources/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="signUpResources/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="../public/signUpResources/fonts/material-icon/css/material-design-iconic-font.min.css"
+    />
     <style>
-        .error {
+      .error {
         width: 150%;
         padding: 0;
         font-size: 100%;
@@ -27,102 +37,136 @@
       }
 
       .error.active {
-        width: 100%
+        width: 100%;
       }
     </style>
-</head>
-    <body>
-
-        <div class="main">
-
-            <!-- Sign up form -->
-            <section class="signup">
-                <div class="container">
-                    <div class="signup-content">
-                        <div class="signup-form">
-                            <h2 class="form-title">Sign up for free!</h2>
-                            <form action="/sign_up" method="post" class="register-form" id="register-form">
-
-                                <div class="form-group">
-                                    <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                    <input type="email" name="email" id="email" required minlength="3" placeholder="Your Email"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                    <input type="password" name="password" id="password" required minlength="7" placeholder="Password"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                    <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat your password"/>
-                                    <span class="error" aria-live="polite"></span>
-                                </div>
-                                <!-- <div class="form-group">
+  </head>
+  <body>
+    <div class="main">
+      <!-- Sign up form -->
+      <section class="signup">
+        <div class="container">
+          <div class="signup-content">
+            <div class="signup-form">
+              <h2 class="form-title">Sign up for free!</h2>
+              <form
+                action="/sign_up"
+                method="post"
+                class="register-form"
+                id="register-form"
+              >
+                <div class="form-group">
+                  <label for="email"><i class="zmdi zmdi-email"></i></label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    minlength="3"
+                    placeholder="Your Email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    required
+                    minlength="7"
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="re-pass"
+                    ><i class="zmdi zmdi-lock-outline"></i
+                  ></label>
+                  <input
+                    type="password"
+                    name="repeatPassword"
+                    id="repeatPassword"
+                    placeholder="Repeat your password"
+                  />
+                  <span class="error" aria-live="polite"></span>
+                </div>
+                <!-- <div class="form-group">
                                     <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                     <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                                 </div>-->
-                                <div class="form-group form-button">
-                                    <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="signup-image">
-                            <figure><img src="signUpResources/images/signup-image.jpg" alt="Sign up image"></figure>
-                            <a href="login"class="signup-image-link" style="font-size: larger;">Already have an account</a>
-                        </div>
-                    </div>
+                <div class="form-group form-button">
+                  <input
+                    type="submit"
+                    name="signup"
+                    id="signup"
+                    class="form-submit"
+                    value="Register"
+                  />
                 </div>
-            </section>
+              </form>
+            </div>
+            <div class="signup-image">
+              <figure>
+                <img
+                  src="signUpResources/images/signup-image.jpg"
+                  alt="Sign up image"
+                />
+              </figure>
+              <a
+                href="login"
+                class="signup-image-link"
+                style="font-size: larger"
+                >Already have an account</a
+              >
+            </div>
+          </div>
         </div>
-        
+      </section>
+    </div>
+
     <script>
-        const form  = document.getElementById('register-form');
-        const email = document.getElementById('email');
-        const password = document.getElementById('password');
-        const repeatPassword = document.getElementById('repeatPassword')      
-        const emailError = document.querySelector('#repeatPassword + span.error');
-        
-        repeatPassword.addEventListener('input', function (event) {
+      const form = document.getElementById("register-form");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const repeatPassword = document.getElementById("repeatPassword");
+      const emailError = document.querySelector("#repeatPassword + span.error");
+
+      repeatPassword.addEventListener("input", function (event) {
         // Each time the user types something, we check if the
         // form fields are valid.
-    
-            if ((password.value != repeatPassword.value)&&(repeatPassword.value.length > 0)){
-                showError();
-                document.querySelector('span.error').style.padding= '1px'
-            }else{
-                emailError.innerHTML = ''; // Reset the content of the message
-                emailError.className = 'error'; // Reset the visual state of the message
-                document.querySelector('span.error').style.padding= '0px'
-            }
 
-           
-            
-         }); 
-        
-
-        form.addEventListener('submit', function (event) {
-        // if the form contains valid data, we let it submit
-        
-        if (password.value != repeatPassword.value){
-            // Then we prevent the form from being sent by canceling the event
-            event.preventDefault();
-        }else{
-           localStorage.setItem('username',email.value)
+        if (
+          password.value != repeatPassword.value &&
+          repeatPassword.value.length > 0
+        ) {
+          showError();
+          document.querySelector("span.error").style.padding = "1px";
+        } else {
+          emailError.innerHTML = ""; // Reset the content of the message
+          emailError.className = "error"; // Reset the visual state of the message
+          document.querySelector("span.error").style.padding = "0px";
         }
-        });
+      });
 
-        function showError() {
-        
-        if(password.value != email.value){
-            emailError.textContent = 'Passwords do not match';
-            //emailError.textContent = `Email should be at least ${ email.minLength } characters; you entered ${ email.value.length }.`;
+      form.addEventListener("submit", function (event) {
+        // if the form contains valid data, we let it submit
+
+        if (password.value != repeatPassword.value) {
+          // Then we prevent the form from being sent by canceling the event
+          event.preventDefault();
+        } else {
+          localStorage.setItem("username", email.value);
+        }
+      });
+
+      function showError() {
+        if (password.value != email.value) {
+          emailError.textContent = "Passwords do not match";
+          //emailError.textContent = `Email should be at least ${ email.minLength } characters; you entered ${ email.value.length }.`;
         }
 
         // Set the styling appropriately
-        emailError.className = 'error active';
-        }
-
+        emailError.className = "error active";
+      }
     </script>
-
-    </body>
-
+  </body>
 </html>

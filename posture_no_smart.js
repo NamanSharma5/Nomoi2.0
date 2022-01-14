@@ -108,13 +108,13 @@ function setup() {
     frameRate(60);
   } else {
     var options = {
-      //compatibleMode
+      //compatible mode
       architecture: "MobileNetV1",
       imageScaleFactor: 0.28,
       outputStride: 16,
       minConfidence: 0.27,
       scoreThreshold: 0.4,
-      inputResolution: 257, // normal =289  161, 193, 257, 289, 321, 353, 385, 417, 449, 481 & 513
+      inputResolution: 257, // normal = 289  Options: 161, 193, 257, 289, 321, 353, 385, 417, 449, 481, 513
       maxPoseDetections: 3,
       detectionType: "multiple",
       multiplier: 0.5,
