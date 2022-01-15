@@ -195,11 +195,11 @@ function setup() {
   leftBoundary = canvasWidth - canvasWidth / 9.4;
   topBoundary = 15;
   bottomBoundary = canvasHeight - canvasHeight / 8.8; // this & left less useful with new small canvas
+
   if (canvasWidth < 475) {
     // CSS media queries
     leftBoundary = canvasWidth + 20;
   }
-
   if (canvasHeight < 475) {
     bottomBoundary = canvasHeight + 100;
   } else if (canvasHeight < 300) {
@@ -215,6 +215,7 @@ function setup() {
   //setTimeout(window.location.href = "https://www.nomoi.org.uk/logout",7200000)//2 hours in ms
 
   notificationModeOn = 1;
+
   //
   // DATA ANALYTICS
   //
@@ -270,14 +271,7 @@ function setup() {
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
-      /*
-       var data = google.visualization.arrayToDataTable([
-       ['Year', 'Sales', 'Expenses'],
-       ['2004',  1000,      400],
-       ['2005',  1170,      460],
-       ['2006',  660,       1120],
-       ['2007',  1030,      540]
-       ]);*/
+
       var data = new google.visualization.DataTable();
       data.addColumn("string", "Date");
       data.addColumn("number", "Nomoi Score");
@@ -465,7 +459,7 @@ function scoreRange(score) {
 }
 
 function draw() {
-  scaleWidth = -((window.innerWidth / 1500) * 0.78); //OG 0.88
+  scaleWidth = -((window.innerWidth / 1500) * 0.78); 
   scaleHeight = (window.innerHeight / 900) * 0.7;
   translate(canvasWidth - 125, 0);
   scale(scaleWidth, scaleHeight);
@@ -668,7 +662,6 @@ function draw() {
             abs(faceTouchcurrentSecond - faceTouchpreviousSecond) == 1 ||
             (faceTouchpreviousSecond == 59 && faceTouchcurrentSecond == 0)
           ) {
-            // do I really need abs(difference)
             faceTouchsessionLength = faceTouchsessionLength + 1;
             faceTouchpreviousSecond = faceTouchcurrentSecond;
           } else {
@@ -861,7 +854,6 @@ function draw() {
       }
 
       if (reset_timer == true) {
-        // FUNCTION removed
         start_time_minute = current_minute;
         start_time_second = current_second - 10;
       }
@@ -905,6 +897,7 @@ function calibrate() {
     tooCloseDistance = distance + 20;
   }
 }
+
 function pausePosture() {
   if (paused == 1) {
     document.getElementById("pausePosture").innerHTML = "Start";
@@ -1019,7 +1012,7 @@ function fullCup() {
       height: "1%",
     },
     3600000
-  ); // 60 *60*1000
+  ); // 1 hour:  60 * 60 * 1000
 
   var water_message;
   water_message = setTimeout(function rehydrate() {
@@ -1105,7 +1098,7 @@ window.addEventListener("resize", function (event) {
   }
 
   clear();
-  // NEED TO FIX RANDOM SPACE TO LEFT OF SKETCH ERROR -- translation error
+  // TODO: fix positioning of sketch
 });
 
 document.addEventListener("click", function () {
@@ -1189,15 +1182,19 @@ function notificationMode() {
 }
 
 setInterval(function regularUpdates() {
+
   currentTime = performance.now();
+
   faceTouchScore =
     faceTouchPreviousScore +
     Number(
       usageWarningScore(currentTime, faceTouchUsageStart, faceTouchWarnings)
     );
   faceTouchScore = scoreRange(faceTouchScore);
+
   faceMaskScore = faceMaskPreviousScore + warningScore(faceMaskWarnings); // do not always have to wear mask
   faceMaskScore = scoreRange(faceMaskScore - 5);
+
   postureTrackerScore =
     postureTrackerPreviousScore +
     Number(
@@ -1208,10 +1205,12 @@ setInterval(function regularUpdates() {
       )
     );
   postureTrackerScore = scoreRange(postureTrackerScore);
+
   screenTimerScore =
     screenTimerPreviousScore +
     Number(usageScore(currentTime, screenTimerScore));
   screenTimerScore = scoreRange(screenTimerScore);
+
   screenDistanceScore =
     screenDistancePreviousScore + warningScore(screenDistanceWarnings);
   screenDistanceScore = scoreRange(screenDistanceScore);
@@ -1236,6 +1235,7 @@ setInterval(function regularUpdates() {
           hydrationTrackerScoreCalculator(hydrationTrackerUsage))
   ).toFixed(0);
   ergonomicScore = scoreRange(ergonomicScore);
+
   covid19Score = Number.parseFloat(
     covid19PreviousScore +
       0.5 *
@@ -1250,18 +1250,9 @@ setInterval(function regularUpdates() {
     (Number(covid19Score) + Number(ergonomicScore)) * 0.5
   ).toFixed(0);
 
-  /*console.log('hydration: ' + hydrationTrackerScore)
-    console.log('postureTracker ' + postureTrackerScore)
-    console.log('screenTimer ' + screenTimerScore)
-    console.log('screenDistance ' + screenDistanceScore)
-    console.log('covid19 ' + covid19Score)
-    console.log('ergonomic ' + ergonomicScore)
-    console.log('nomoi ' + nomoiScore) */
 }, 30000);
 
 window.addEventListener("beforeunload", function (e) {
-  //e.preventDefault();
-  //e.returnValue = '';
 
   if (userData.history.length > 3) {
     var cutHistory = {
@@ -1452,7 +1443,7 @@ setInterval(function () {
   var columnHeight1 = faceTouchScore;
   var columnHeight2 = faceMaskScore;
 
-  //Generic column color
+  // Generic column color
   var color = "#FFEB3B";
 
   function columnColor(columnHeight) {
